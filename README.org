@@ -1,0 +1,5 @@
+* Emacs configuration
+
+I like certain things the same wherever I am but I need different
+settings for different work machines and home. Hopefully this will
+make it easier to keep things in sync.
