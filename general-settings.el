@@ -1,6 +1,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;; General settings
+;; general-settings.el
+;;
+
+
+;;;; global settings
 
 ;; move stuff to trash instead of vaporize
 (setq delete-by-moving-to-trash t)
@@ -38,3 +42,26 @@
 ;; i don't like typing yes and no
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+
+;;;; built-in packages
+
+;; uniquify makes the buffer names unique with path included
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+
+;; IDO mode
+(require 'ido)
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+;; don't prompt to make a new buffer
+(setq ido-create-new-buffer 'always)
+(ido-mode t)
+
+;; windmove: C-x o -> Shift+arrow
+(require 'windmove)
+(windmove-default-keybindings)
+;; Make windmove work in org-mode:
+(add-hook 'org-shiftup-final-hook 'windmove-up)
+(add-hook 'org-shiftleft-final-hook 'windmove-left)
+(add-hook 'org-shiftdown-final-hook 'windmove-down)
+(add-hook 'org-shiftright-final-hook 'windmove-right)
