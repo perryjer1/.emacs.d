@@ -1,10 +1,9 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; general-settings.el
 ;;
 
 
-;;;; global settings
+;;; global settings
 
 ;; move stuff to trash instead of vaporize
 (setq delete-by-moving-to-trash t)
@@ -43,7 +42,7 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 
-;;;; built-in packages
+;;; built-in packages
 
 ;; uniquify makes the buffer names unique with path included
 (require 'uniquify)
@@ -65,3 +64,39 @@
 (add-hook 'org-shiftleft-final-hook 'windmove-left)
 (add-hook 'org-shiftdown-final-hook 'windmove-down)
 (add-hook 'org-shiftright-final-hook 'windmove-right)
+
+
+;;; functions and key bindings
+
+;; I often type C-x f but not because I want to set the fill
+(global-set-key "\C-xf" 'find-file)
+
+(global-set-key "\C-ct" 'toggle-truncate-lines)
+
+(global-set-key "\C-cr" 'revert-buffer)
+(global-set-key "\C-cR" 'auto-revert-mode)
+(global-set-key "\C-cT" 'auto-revert-tail-mode)
+
+(defun my-dired-home ()
+  "Dired my home directory."
+  (interactive)
+  (dired "~"))
+
+(global-set-key "\C-cj" 'my-dired-home)
+
+;; scrolling by default moves the screen too much for me
+(defun my-scroll-left ()
+  "Scrolls the window one third to the left."
+  (interactive)
+  (scroll-left (/ (window-body-width) 3) t))
+
+(defun my-scroll-right ()
+  "Scrolls the window one third to the right."
+  (interactive)
+  (scroll-right (/ (window-body-width) 3) t))
+
+(global-set-key (kbd "C-<next>") 'my-scroll-left)
+(global-set-key (kbd "C-<prev>") 'my-scroll-right)
+
+;; make Emacs a server
+(server-start)
