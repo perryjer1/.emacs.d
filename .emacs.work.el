@@ -12,3 +12,4 @@
 (setq find-program "gfind")
 
 (set-frame-size (selected-frame) 220 65)
+(desktop-save-mode t)
