@@ -1,6 +1,9 @@
-;;
-;; general-settings.el
-;;
+;;;
+;;; general-settings.el
+;;;
+;;; Everything in this file should be compatible with the standard
+;;; Emacs 24.3 distribution.
+;;;
 
 
 ;;; global settings
@@ -64,6 +67,10 @@
 (add-hook 'org-shiftleft-final-hook 'windmove-left)
 (add-hook 'org-shiftdown-final-hook 'windmove-down)
 (add-hook 'org-shiftright-final-hook 'windmove-right)
+
+;; set matlab m-files to load in octave mode
+(setq auto-mode-alist
+      (append '(("\\.m$" . octave-mode)) auto-mode-alist))
 
 
 ;;; functions and key bindings

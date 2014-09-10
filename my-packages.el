@@ -10,7 +10,6 @@
     flymake
     batch-mode
     csharp-mode
-    octave-mod
     highlight-symbol
     magit
     ) "list of packages to install if missing")
@@ -56,33 +55,30 @@
 ;; something about flymake-mode interaction--this should fix it:
 (require 'flymake)
 
-;; set matlab m-files to load in octave mode
-(setq auto-mode-alist
-      (append '(("\\.m$" . octave-mode)) auto-mode-alist))
-
-
 ;; add highlight-symbol
 (require 'highlight-symbol)
 (global-set-key (kbd "C-*") 'highlight-symbol-at-point)
 
 
 ;; ESS
+(require 'ess-site)
 
-(cond ((i-am-at 'work) (require 'ess-site))
-      ((i-am-at 'home) (load "ess-site")))
+(cond ((eql my-location 'home)
+       (setq inferior-R-program-name "/usr/bin/R"))
+      ((eql my-location 'work)
+       (setq inferior-R-program-name "C:/Program Files/R/R-3.0.0/bin/x64/Rterm.exe"))
+      (t nil))
 
-(setq inferior-R-program-name
-      (cond ((i-am-at 'work) "C:/Program Files/R/R-3.0.0/bin/x64/Rterm.exe")
-	    ((i-am-at 'home) "/usr/bin/R")))
-
-;; ESS: don't ask for starting directory
+;; don't ask for starting directory
 (setq ess-ask-for-ess-directory nil)
 
-;; ESS: just use this as the starting directory
-(when (i-am-at 'work) (setq ess-directory "C:/Work/Misc/R/"))
+;; just use this as the starting directory
+(cond ((eql my-location 'home) (setq ess-directory "C:/Work/Misc/R/"))
+      (t nil))
 
 
 ;; Slime
+(require 'slime)
 
 ;; (when (i-am-at 'work)
 ;;   (setenv "LISPBOX_HOME" "C:/Work/Misc/lisp/lispbox-0.7")
