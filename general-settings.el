@@ -17,6 +17,9 @@
 ;; word wrap off by default
 (setq-default truncate-lines t)
 
+;; show column numbers in mode line
+(setq column-number-mode t)
+
 ;; C-k kills new line
 (setq kill-whole-line t)
 
@@ -106,4 +109,7 @@
 (global-set-key (kbd "C-<prev>") 'my-scroll-right)
 
 ;; make Emacs a server
+;; some bug (related to git?) is messing up server-start
+;;   http://stackoverflow.com/questions/885793/emacs-error-when-calling-server-start
+;; i changed the owner of ~/.emacs.d/server as suggested in answer.
 (server-start)
