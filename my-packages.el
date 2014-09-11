@@ -47,14 +47,15 @@
       (append '(("\\.bat$" . batch-mode)) auto-mode-alist))
 
 ;; c# mode
-(require 'csharp-mode)
-(autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
-(setq auto-mode-alist
-      (append '(("\\.cs$" . csharp-mode)) auto-mode-alist))
-(add-hook 'csharp-mode-hook (lambda () (setq default-tab-width 4)))
-;; for some reason, csharp-mode messes with reverting buffers,
-;; something about flymake-mode interaction--this should fix it:
-(require 'flymake)
+(unless (eql my-location 'work-linux)
+  (require 'csharp-mode)
+  (autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
+  (setq auto-mode-alist
+	(append '(("\\.cs$" . csharp-mode)) auto-mode-alist))
+  (add-hook 'csharp-mode-hook (lambda () (setq default-tab-width 4)))
+  ;; for some reason, csharp-mode messes with reverting buffers,
+  ;; something about flymake-mode interaction--this should fix it:
+  (require 'flymake))
 
 ;; add highlight-symbol
 (require 'highlight-symbol)
