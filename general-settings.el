@@ -75,6 +75,12 @@
 (setq auto-mode-alist
       (append '(("\\.m$" . octave-mode)) auto-mode-alist))
 
+;; Ibuffer
+;;  http://www.emacswiki.org/emacs/IbufferMode
+(require 'ibuffer)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+(autoload 'ibuffer "ibuffer" "List buffers." t)
+
 
 ;;; functions and key bindings
 
