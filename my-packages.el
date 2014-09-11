@@ -23,7 +23,8 @@
 	     '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (package-initialize)
 
-
+;; got this idea from Yusuke Tsutsumi
+;;  http://toumorokoshi.github.io/emacs-from-scratch-part-2-package-management.html
 (defun my-package-installer ()
   "Install needed packages."
   (interactive)
@@ -73,7 +74,9 @@
 (setq ess-ask-for-ess-directory nil)
 
 ;; just use this as the starting directory
-(cond ((eql my-location 'home) (setq ess-directory "C:/Work/Misc/R/"))
+(cond ((eql my-location 'work) (setq ess-directory "C:/Work/Misc/R/"))
+      ((eql my-location 'work-linux) (setq ess-directory "~"))
+      ((eql my-location 'home) (setq ess-directory "~"))
       (t nil))
 
 
