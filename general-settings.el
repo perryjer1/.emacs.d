@@ -89,7 +89,13 @@
 
 (global-set-key "\C-ct" 'toggle-truncate-lines)
 
-(global-set-key "\C-cr" 'revert-buffer)
+(defun my-revert-buffer ()
+  "Revert buffer."
+  (interactive)
+  (revert-buffer nil t)
+  (message "Reverted buffer '%s'" (buffer-name)))
+
+(global-set-key "\C-cr" 'my-revert-buffer)
 (global-set-key "\C-cR" 'auto-revert-mode)
 (global-set-key "\C-cT" 'auto-revert-tail-mode)
 
