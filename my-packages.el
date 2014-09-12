@@ -10,6 +10,7 @@
     flymake
     batch-mode
     csharp-mode
+    markdown-mode
     highlight-symbol
     magit
     ) "list of packages to install if missing")
@@ -56,6 +57,14 @@
   ;; for some reason, csharp-mode messes with reverting buffers,
   ;; something about flymake-mode interaction--this should fix it:
   (require 'flymake))
+
+;; markdown
+(require 'markdown-mode)
+(autoload 'markdown-mode "markdown-mode" "Major mode for editing Markdown" t)
+(setq auto-mode-alist
+      (append '(("\\.md$" . markdown-mode)) auto-mode-alist))
+(setq auto-mode-alist
+      (append '(("\\.markdown$" . markdown-mode)) auto-mode-alist))
 
 ;; add highlight-symbol
 (require 'highlight-symbol)
