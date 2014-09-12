@@ -80,6 +80,9 @@
 (require 'ibuffer)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (autoload 'ibuffer "ibuffer" "List buffers." t)
+;; don't prompt every time I close buffers
+;; http://martinowen.net/blog/2010/02/03/tips-for-emacs-ibuffer.html
+(setq ibuffer-expert t)
 
 
 ;;; functions and key bindings
