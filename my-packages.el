@@ -11,6 +11,7 @@
     batch-mode
     csharp-mode
     markdown-mode
+    yaml-mode
     highlight-symbol
     magit
     ) "list of packages to install if missing")
@@ -65,6 +66,10 @@
       (append '(("\\.md$" . markdown-mode)) auto-mode-alist))
 (setq auto-mode-alist
       (append '(("\\.markdown$" . markdown-mode)) auto-mode-alist))
+
+;; yaml
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
 ;; add highlight-symbol
 (require 'highlight-symbol)
