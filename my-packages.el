@@ -45,15 +45,13 @@
 ;; batch mode
 (require 'batch-mode)
 (autoload 'batch-mode "batch-mode" "Major mode for editing bat files." t)
-(setq auto-mode-alist
-      (append '(("\\.bat$" . batch-mode)) auto-mode-alist))
+(add-to-list 'auto-mode-alist '("\\.bat$" . batch-mode))
 
 ;; c# mode
 (unless (eql my-location 'work-linux)
   (require 'csharp-mode)
   (autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
-  (setq auto-mode-alist
-	(append '(("\\.cs$" . csharp-mode)) auto-mode-alist))
+  (add-to-list 'auto-mode-alist	'("\\.cs$" . csharp-mode))
   (add-hook 'csharp-mode-hook (lambda () (setq default-tab-width 4)))
   ;; for some reason, csharp-mode messes with reverting buffers,
   ;; something about flymake-mode interaction--this should fix it:
@@ -62,10 +60,8 @@
 ;; markdown
 (require 'markdown-mode)
 (autoload 'markdown-mode "markdown-mode" "Major mode for editing Markdown" t)
-(setq auto-mode-alist
-      (append '(("\\.md$" . markdown-mode)) auto-mode-alist))
-(setq auto-mode-alist
-      (append '(("\\.markdown$" . markdown-mode)) auto-mode-alist))
+(add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
 
 ;; yaml
 (require 'yaml-mode)

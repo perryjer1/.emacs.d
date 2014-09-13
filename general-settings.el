@@ -72,8 +72,7 @@
 (add-hook 'org-shiftright-final-hook 'windmove-right)
 
 ;; set matlab m-files to load in octave mode
-(setq auto-mode-alist
-      (append '(("\\.m$" . octave-mode)) auto-mode-alist))
+(add-to-list 'auto-mode-alist '("\\.m$" . octave-mode))
 
 ;; Ibuffer
 ;;  http://www.emacswiki.org/emacs/IbufferMode
