@@ -8,3 +8,4 @@
 (load "~/.emacs.d/my-packages.el")
 
 (set-frame-size (selected-frame) 185 48)
+(desktop-save-mode t)
