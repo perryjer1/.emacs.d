@@ -14,6 +14,7 @@
     yaml-mode
     highlight-symbol
     magit
+    smex
     ) "list of packages to install if missing")
 
 
@@ -98,3 +99,7 @@
 ;;   (setenv "LISPBOX_HOME" "C:/Work/Misc/lisp/lispbox-0.7")
 ;;   (load "lispbox"))
 ;; to start slime, type M-x slime
+
+
+(require 'smex)
+(global-set-key (kbd "M-x") 'smex)
