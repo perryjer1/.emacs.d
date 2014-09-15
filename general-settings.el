@@ -83,6 +83,32 @@
 ;; http://martinowen.net/blog/2010/02/03/tips-for-emacs-ibuffer.html
 (setq ibuffer-expert t)
 
+(setq ibuffer-saved-filter-groups
+      `(("default"
+	 ("dired" (mode . dired-mode))
+	 ("python" (mode . python-mode))
+	 ("R" (or (name . ".\[Rr\]$")
+		  (name . "^\\*R\\*$")))
+	 ("org" (mode . org-mode))
+         ("emacs.d" (or (filename . ,(expand-file-name "~/.emacs.d/"))
+			(filename . ,(expand-file-name "~/.emacs"))))
+	 ("Help" (or (mode . Man-mode)
+                     (mode . woman-mode)
+                     (mode . Info-mode)
+                     (mode . Help-mode)
+                     (mode . help-mode)))
+         ("Emacs internal" (or (name . "*Messages*")
+			       (name . "*scratch*")
+                               (name . "*Completions*")
+                               (name . "*Helm log*")
+                               (name . "*helm recentf*")
+                               (name . "*ESS*")
+                               (name . "*Compile-Log*"))))))
+
+(add-hook 'ibuffer-mode-hook
+              (lambda ()
+                (ibuffer-switch-to-saved-filter-groups "default")))
+
 
 ;;; functions and key bindings
 
