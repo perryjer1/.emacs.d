@@ -33,7 +33,7 @@
 (setq set-mark-command-repeat-pop t)
 
 ;; backup file stuff
-(setq backup-directory-alist `(("." . "~/.emacs.backups")))
+(setq backup-directory-alist `(("." . "~/.emacs.d/backups")))
 (setq backup-by-copying t
       delete-old-versions t
       kept-new-versions 6
