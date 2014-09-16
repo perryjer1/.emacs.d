@@ -148,6 +148,17 @@
 (global-set-key (kbd "C-<next>") 'my-scroll-left)
 (global-set-key (kbd "C-<prev>") 'my-scroll-right)
 
+(defun copy-filename ()
+  "Copies filename of current buffer to clipboard."
+  (interactive)
+  (let ((buffer (current-buffer)))
+    (when buffer
+      (let ((file-name (buffer-file-name buffer)))
+	(when file-name
+	  (kill-new file-name)
+	  (message "'%s' copied to clipboard." file-name))))))
+
+
 ;; make Emacs a server
 ;; some bug (related to git?) is messing up server-start
 ;;   http://stackoverflow.com/questions/885793/emacs-error-when-calling-server-start
