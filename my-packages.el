@@ -28,7 +28,7 @@
 
 ;; got this idea from Yusuke Tsutsumi
 ;;  http://toumorokoshi.github.io/emacs-from-scratch-part-2-package-management.html
-(defun my-package-installer ()
+(defun jp/package-installer ()
   "Install needed packages."
   (interactive)
   (let ((refreshed nil))
@@ -41,7 +41,7 @@
 	 (package-install p)))
      required-packages)))
 
-(my-package-installer)
+(jp/package-installer)
 
 ;; batch mode
 (require 'batch-mode)

@@ -85,30 +85,36 @@
 
 (setq ibuffer-saved-filter-groups
       `(("default"
-	 ("dired" (mode . dired-mode))
-	 ("python" (mode . python-mode))
-	 ("R" (or (name . ".\[Rr\]$")
-		  (name . "^\\*R\\*$")))
-	 ("org" (mode . org-mode))
+		 ("dired" (mode . dired-mode))
+		 ("python" (mode . python-mode))
+		 ("R" (or (name . ".\[Rr\]$")
+				  (name . "^\\*R\\*$")))
+		 ("org" (mode . org-mode))
          ("emacs.d" (or (filename . ,(expand-file-name "~/.emacs.d/"))
-			(filename . ,(expand-file-name "~/.emacs"))))
-	 ("Help" (or (mode . Man-mode)
-                     (mode . woman-mode)
-                     (mode . Info-mode)
-                     (mode . Help-mode)
-                     (mode . help-mode)))
-         ("Emacs internal" (or (name . "*Messages*")
-			       (name . "*scratch*")
-                               (name . "*Completions*")
-                               (name . "*Helm log*")
-                               (name . "*helm recentf*")
-                               (name . "*ESS*")
-                               (name . "*Compile-Log*"))))))
+						(filename . ,(expand-file-name "~/.emacs"))))
+		 ("Help" (or (mode . Man-mode)
+					 (mode . woman-mode)
+					 (mode . Info-mode)
+					 (mode . Help-mode)
+					 (mode . help-mode)))
+		 ("Emacs internal" (or (name . "*Messages*")
+							   (name . "*scratch*")
+							   (name . "*Completions*")
+							   (name . "*Helm log*")
+							   (name . "*helm recentf*")
+							   (name . "*ESS*")
+							   (name . "*Compile-Log*"))))))
 
 (add-hook 'ibuffer-mode-hook
               (lambda ()
                 (ibuffer-switch-to-saved-filter-groups "default")))
 
+;; recentf
+;; http://www.emacswiki.org/emacs/RecentFiles
+(require 'recentf)
+(recentf-mode t)
+(setq recentf-max-menu-items 25)
+(global-set-key "\C-x\ \C-r" 'recentf-open-files)
 
 ;;; functions and key bindings
 
@@ -117,36 +123,36 @@
 
 (global-set-key "\C-ct" 'toggle-truncate-lines)
 
-(defun my-revert-buffer ()
+(defun jp/revert-buffer ()
   "Revert buffer."
   (interactive)
   (revert-buffer nil t)
   (message "Reverted buffer '%s'" (buffer-name)))
 
-(global-set-key "\C-cr" 'my-revert-buffer)
+(global-set-key "\C-cr" 'jp/revert-buffer)
 (global-set-key "\C-cR" 'auto-revert-mode)
 (global-set-key "\C-cT" 'auto-revert-tail-mode)
 
-(defun my-dired-home ()
+(defun jp/dired-home ()
   "Dired my home directory."
   (interactive)
   (dired "~"))
 
-(global-set-key "\C-cj" 'my-dired-home)
+(global-set-key "\C-cj" 'jp/dired-home)
 
 ;; scrolling by default moves the screen too much for me
-(defun my-scroll-left ()
+(defun jp/scroll-left ()
   "Scrolls the window one third to the left."
   (interactive)
   (scroll-left (/ (window-body-width) 3) t))
 
-(defun my-scroll-right ()
+(defun jp/scroll-right ()
   "Scrolls the window one third to the right."
   (interactive)
   (scroll-right (/ (window-body-width) 3) t))
 
-(global-set-key (kbd "C-<next>") 'my-scroll-left)
-(global-set-key (kbd "C-<prev>") 'my-scroll-right)
+(global-set-key (kbd "C-<next>") 'jp/scroll-left)
+(global-set-key (kbd "C-<prev>") 'jp/scroll-right)
 
 ;; next set of functions is used to copy filename to clipboard
 (defun jp/get-filename-buffer ()
@@ -172,6 +178,14 @@
       (message "'%s' copied to clipboard." file-name))))
 
 (global-set-key "\C-cp" 'jp/copy-filename)
+
+;; switch back and forth quickly
+(defun jp/switch-other-buffer ()
+  "Switch to other buffer without prompting."
+  (interactive)
+  (switch-to-buffer (other-buffer)))
+
+(global-set-key "\C-cb" 'jp/switch-other-buffer)
 
 ;; make Emacs a server
 ;; some bug (related to git?) is messing up server-start
