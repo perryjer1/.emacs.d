@@ -148,16 +148,30 @@
 (global-set-key (kbd "C-<next>") 'my-scroll-left)
 (global-set-key (kbd "C-<prev>") 'my-scroll-right)
 
-(defun copy-filename ()
-  "Copies filename of current buffer to clipboard."
+;; next set of functions is used to copy filename to clipboard
+(defun jp/get-filename-buffer ()
+  "Gets filename of current buffer."
   (interactive)
   (let ((buffer (current-buffer)))
-    (when buffer
-      (let ((file-name (buffer-file-name buffer)))
-	(when file-name
-	  (kill-new file-name)
-	  (message "'%s' copied to clipboard." file-name))))))
+    (when buffer (buffer-file-name buffer))))
 
+(defun jp/get-filename-dired ()
+  "Gets filename of current dired line."
+  (interactive)
+  (dired-get-filename nil t))
+
+(defun jp/copy-filename ()
+  "Copy filename of buffer or dired line to clipboard."
+  (interactive)
+  (let ((file-name
+	 (if (derived-mode-p 'dired-mode)
+	     (jp/get-filename-dired)
+	   (jp/get-filename-buffer))))
+    (when file-name
+      (kill-new file-name)
+      (message "'%s' copied to clipboard." file-name))))
+
+(global-set-key "\C-cp" 'jp/copy-filename)
 
 ;; make Emacs a server
 ;; some bug (related to git?) is messing up server-start
