@@ -87,8 +87,9 @@
       `(("default"
 		 ("dired" (mode . dired-mode))
 		 ("python" (mode . python-mode))
-		 ("R" (or (name . ".\[Rr\]$")
-				  (name . "^\\*R\\*$")))
+		 ("R" (or (name . "^.*\[Rr\]$")
+				  (name . "^\\*R\\*$")
+				  (name . "^\\*help\\[R\\].*$")))
 		 ("org" (mode . org-mode))
          ("emacs.d" (or (filename . ,(expand-file-name "~/.emacs.d/"))
 						(filename . ,(expand-file-name "~/.emacs"))))
