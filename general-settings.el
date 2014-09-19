@@ -47,6 +47,9 @@
 ;; i don't like typing yes and no
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+;; turn off the toolbar
+(tool-bar-mode -1)
+
 
 ;;; built-in packages
 
