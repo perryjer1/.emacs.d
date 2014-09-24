@@ -103,6 +103,9 @@
 
 
 (require 'magit)
+;; git is not on my path at work...
+(when (eql my-location 'work)
+  (setq magit-git-executable "C:/Program Files (x86)/Git/bin/git.exe"))
 
 
 ;;  https://github.com/ananthakumaran/monky
