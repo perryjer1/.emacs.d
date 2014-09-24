@@ -7,5 +7,5 @@
 (load "~/.emacs.d/general-settings.el")
 (load "~/.emacs.d/my-packages.el")
 
-(set-frame-size (selected-frame) 185 48)
+(set-frame-size (selected-frame) 195 50)
 (desktop-save-mode t)
