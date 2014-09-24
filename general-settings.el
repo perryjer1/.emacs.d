@@ -89,7 +89,8 @@
 (setq ibuffer-saved-filter-groups
       `(("default"
 		 ("dired" (mode . dired-mode))
-		 ("python" (mode . python-mode))
+		 ("python" (or (mode . python-mode)
+					   (name . "^\\*Python\\*$")))
 		 ("R" (or (name . "^.*\[Rr\]$")
 				  (name . "^\\*R\\*$")
 				  (name . "^\\*help\\[R\\].*$")))
