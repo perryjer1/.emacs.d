@@ -191,6 +191,8 @@
 
 (global-set-key "\C-cb" 'jp/switch-other-buffer)
 
+(load-theme 'deeper-blue)
+
 ;; make Emacs a server
 ;; some bug (related to git?) is messing up server-start
 ;;   http://stackoverflow.com/questions/885793/emacs-error-when-calling-server-start
