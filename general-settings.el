@@ -39,6 +39,10 @@
       kept-new-versions 6
       kept-old-versions 2)
 
+;; make ediff split vertically by default (which emacs calls horizontal)
+(setq ediff-split-window-function 'split-window-horizontally)
+(setq ediff-merge-split-window-function 'split-window-horizontally)
+
 ;; enable commands
 (put 'scroll-left 'disabled nil)
 (put 'upcase-region 'disabled nil)
