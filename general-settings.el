@@ -69,6 +69,8 @@
 (setq ido-create-new-buffer 'always)
 (ido-mode t)
 
+(global-set-key "\C-ci" 'ido-mode)
+
 ;; windmove: C-x o -> Shift+arrow
 (require 'windmove)
 (windmove-default-keybindings)
