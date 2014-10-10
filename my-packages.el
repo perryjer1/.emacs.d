@@ -92,9 +92,17 @@
       ((eql my-location 'home) (setq ess-directory "~"))
       (t nil))
 
+(setq ess-default-style 'GNU)
+
 
 ;; Slime
 (require 'slime)
+
+;; http://common-lisp.net/project/slime/doc/html/Installation.html#Installation
+(require 'slime-autoloads)
+(setq inferior-lisp-program "C:/sbcl/sbcl.exe")
+(add-to-list 'slime-contribs 'slime-fancy)
+(add-to-list 'slime-contribs 'slime-repl)
 
 ;; (when (i-am-at 'work)
 ;;   (setenv "LISPBOX_HOME" "C:/Work/Misc/lisp/lispbox-0.7")
