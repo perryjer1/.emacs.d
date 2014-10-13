@@ -92,7 +92,9 @@
       ((eql my-location 'home) (setq ess-directory "~"))
       (t nil))
 
-(setq ess-default-style 'GNU)
+(add-hook 'ess-mode-hook
+		  (lambda ()
+			(setq ess-default-style 'GNU)))
 
 
 ;; Slime
