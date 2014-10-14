@@ -99,6 +99,7 @@
 					   (name . "^\\*Python\\*$")))
 		 ("R" (or (name . "^.*\[Rr\]$")
 				  (name . "^\\*R\\*$")
+				  (name . "^\\.Rprofile")
 				  (name . "^\\*help\\[R\\].*$")))
 		 ("org" (mode . org-mode))
          ("emacs.d" (or (filename . ,(expand-file-name "~/.emacs.d/"))
