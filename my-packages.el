@@ -79,6 +79,8 @@
 
 (cond ((eql my-location 'home)
        (setq inferior-R-program-name "/usr/bin/R"))
+      ((eql my-location 'home-linux)
+       (setq inferior-R-program-name "/usr/local/bin/R"))
       ((eql my-location 'work)
        (setq inferior-R-program-name "C:/Program Files/R/R-3.1.1/bin/x64/Rterm.exe"))
       (t nil))
