@@ -89,7 +89,7 @@
 (setq ess-ask-for-ess-directory nil)
 
 ;; just use this as the starting directory
-(cond ((eql my-location 'work) (setq ess-directory "C:/Work/Misc/R/"))
+(cond ((eql my-location 'work) (setq ess-directory "~/Documents/research/"))
       ((eql my-location 'work-linux) (setq ess-directory "~"))
       ((eql my-location 'home) (setq ess-directory "~"))
       (t nil))
@@ -107,11 +107,6 @@
 (setq inferior-lisp-program "C:/sbcl/sbcl.exe")
 (add-to-list 'slime-contribs 'slime-fancy)
 (add-to-list 'slime-contribs 'slime-repl)
-
-;; (when (i-am-at 'work)
-;;   (setenv "LISPBOX_HOME" "C:/Work/Misc/lisp/lispbox-0.7")
-;;   (load "lispbox"))
-;; to start slime, type M-x slime
 
 
 (require 'magit)
