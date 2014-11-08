@@ -135,6 +135,9 @@
 
 (global-set-key "\C-ct" 'toggle-truncate-lines)
 
+(global-set-key (kbd "<f8>") 'window-configuration-to-register)
+(global-set-key (kbd "<f9>") 'jump-to-register)
+
 (defun jp/revert-buffer ()
   "Revert buffer."
   (interactive)
