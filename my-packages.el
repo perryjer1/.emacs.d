@@ -98,7 +98,7 @@
 			(setq ess-default-style 'GNU)))
 
 ;; modified from comint-dynamic-list-input-ring
-(defun jer/r-history ()
+(defun jp/r-history ()
   "Display R history."
   (interactive)
   (if (or (not (ring-p comint-input-ring))
