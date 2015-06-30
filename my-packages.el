@@ -11,10 +11,11 @@
     batch-mode
     csharp-mode
     markdown-mode
+    racket-mode
     yaml-mode
     highlight-symbol
     magit
-	monky
+    monky
     smex
     ) "list of packages to install if missing")
 
@@ -68,6 +69,10 @@
 ;; yaml
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+
+;; racket
+(require 'racket-mode)
+(add-to-list 'auto-mode-alist '("\\.rkt$" . racket-mode))
 
 ;; add highlight-symbol
 (require 'highlight-symbol)
