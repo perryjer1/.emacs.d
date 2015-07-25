@@ -73,6 +73,8 @@
 ;; racket
 (require 'racket-mode)
 (add-to-list 'auto-mode-alist '("\\.rkt$" . racket-mode))
+(if (eql my-location 'home)
+  (setq racket-racket-program "/usr/local/bin/racket"))
 
 ;; add highlight-symbol
 (require 'highlight-symbol)
