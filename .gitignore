@@ -3,3 +3,4 @@ elpa/*
 server/*
 backups/*
 .emacs.desktop*
+smex-items
