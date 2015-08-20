@@ -54,6 +54,9 @@
 ;; turn off the toolbar
 (tool-bar-mode -1)
 
+;; turn on paren matching
+(show-paren-mode 1)
+
 
 ;;; built-in packages
 
