@@ -33,15 +33,15 @@
 (setq set-mark-command-repeat-pop t)
 
 ;; backup file stuff
-(setq backup-directory-alist `(("." . "~/.emacs.d/backups")))
-(setq backup-by-copying t
+(setq backup-directory-alist `(("." . ,(concat user-emacs-directory "backups")))
+      backup-by-copying t
       delete-old-versions t
       kept-new-versions 6
       kept-old-versions 2)
 
 ;; make ediff split vertically by default (which emacs calls horizontal)
-(setq ediff-split-window-function 'split-window-horizontally)
-(setq ediff-merge-split-window-function 'split-window-horizontally)
+(setq ediff-split-window-function 'split-window-horizontally
+      ediff-merge-split-window-function 'split-window-horizontally)
 
 ;; enable commands
 (put 'scroll-left 'disabled nil)
