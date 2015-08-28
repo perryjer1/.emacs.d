@@ -40,3 +40,9 @@
 ;;   http://stackoverflow.com/questions/885793/emacs-error-when-calling-server-start
 ;; i changed the owner of ~/.emacs.d/server as suggested in answer.
 (server-start)
+
+;; ;; screen gets messed up sometimes
+;; (global-set-key (kbd "<f5>") 'redraw-display)
+
+;; ;; at work, i use gfind for windows
+;; (setq find-program "gfind")
