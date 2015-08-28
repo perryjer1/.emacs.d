@@ -26,8 +26,8 @@
 ;; racket
 (require 'racket-mode)
 (add-to-list 'auto-mode-alist '("\\.rkt$" . racket-mode))
-(if (eql my-location 'home)
-  (setq racket-racket-program "/usr/local/bin/racket"))
+;; TODO this was for mac at home, should be fixed when i get PATH setup correctly
+;; (setq racket-racket-program "/usr/local/bin/racket")
 
 ;; ;; add highlight-symbol
 ;; (require 'highlight-symbol)
