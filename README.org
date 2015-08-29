@@ -1,3 +1,3 @@
 * Emacs configuration
 
-This is my .emacs.d, heavily inspried by [[https://github.com/purcell/emacs.d][Purcell's .emacs.d]].
+This is my .emacs.d, influenced by [[https://github.com/purcell/emacs.d][Purcell's .emacs.d]].
