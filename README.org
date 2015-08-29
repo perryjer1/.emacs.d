@@ -1,14 +1,3 @@
 * Emacs configuration
 
-
-- general-settings.el :: All settings in this file require no
-     external dependencies.
-
-- my-packages.el :: Contains some code to download packages I use
-                    as well as configuration for those packages.
-
-- old.el :: From my old .emacs file, just in case.
-
-
-The .emacs.* files are symlinked or copied as ~/.emacs in their
-respective locations.
+This is my .emacs.d, heavily inspried by [[https://github.com/purcell/emacs.d][Purcell's .emacs.d]].
