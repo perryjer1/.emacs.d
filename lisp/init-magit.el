@@ -1,3 +1,5 @@
+(jp/install-if-needed 'magit)
+
 (require 'magit)
 
 ;; git is not on my path at work...

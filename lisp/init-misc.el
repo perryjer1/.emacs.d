@@ -10,26 +10,34 @@
 
 
 ;; batch mode
+(jp/install-if-needed 'batch-mode)
+
 (require 'batch-mode)
 (autoload 'batch-mode "batch-mode" "Major mode for editing bat files." t)
 (add-to-list 'auto-mode-alist '("\\.bat$" . batch-mode))
 
 ;; yaml
+(jp/install-if-needed 'yaml-mode)
+
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
 ;; racket
+(jp/install-if-needed 'racket-mode)
+
 (require 'racket-mode)
 (add-to-list 'auto-mode-alist '("\\.rkt$" . racket-mode))
 ;; TODO this was for mac at home, should be fixed when i get PATH setup correctly
 ;; (setq racket-racket-program "/usr/local/bin/racket")
 
 ;; ;; add highlight-symbol
+;; (jp/install-if-needed 'highlight-symbol)
 ;; (require 'highlight-symbol)
 ;; (global-set-key (kbd "C-*") 'highlight-symbol-at-point)
 
 
 ;; ;; Slime
+;; (jp/install-if-needed 'slime)
 ;; (require 'slime)
 
 ;; ;; http://common-lisp.net/project/slime/doc/html/Installation.html#Installation
@@ -40,6 +48,7 @@
 
 
 ;;  https://github.com/ananthakumaran/monky
+(jp/install-if-needed 'monky)
 (require 'monky)
 (setq monky-process-type 'cmdserver)
 

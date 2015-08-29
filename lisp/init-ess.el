@@ -1,4 +1,6 @@
 ;; ESS
+(jp/install-if-needed 'ess)
+
 (require 'ess-site)
 
 ;; don't ask for starting directory
@@ -8,8 +10,9 @@
 (setq ess-directory "~")
 
 (add-hook 'ess-mode-hook
-		  (lambda ()
-			(setq ess-default-style 'GNU)))
+	  (lambda ()
+	    (setq ess-default-style 'GNU)))
+
 
 ;; modified from comint-dynamic-list-input-ring
 (defun jp/r-history ()
@@ -27,7 +30,6 @@
 	  (with-output-to-temp-buffer history-buffer
 		(with-current-buffer standard-output
 		  (mapcar (lambda (x) (insert x) (insert "\n")) history))))))
-
 
 
 (provide 'init-ess)

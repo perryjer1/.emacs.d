@@ -1,4 +1,6 @@
 ;; markdown
+(jp/install-if-needed 'markdown-mode)
+
 (require 'markdown-mode)
 
 (autoload 'markdown-mode "markdown-mode" "Major mode for editing Markdown" t)

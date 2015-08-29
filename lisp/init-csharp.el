@@ -1,4 +1,6 @@
 ;; c# mode
+(jp/install-if-needed 'csharp-mode)
+
 (require 'csharp-mode)
 
 (autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
@@ -7,6 +9,8 @@
 
 ;; for some reason, csharp-mode messes with reverting buffers,
 ;; something about flymake-mode interaction--this should fix it:
+(jp/install-if-needed 'flymake)
+
 (require 'flymake)
 
 (provide 'init-csharp)
