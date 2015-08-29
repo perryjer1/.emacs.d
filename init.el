@@ -9,6 +9,8 @@
 
 (require 'init-utils)
 (require 'init-package)
+
+(require 'init-exec-path)
 (require 'init-markdown)
 (require 'init-ess)
 (require 'init-python)
