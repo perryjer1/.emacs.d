@@ -128,4 +128,8 @@
 (global-set-key "\C-cb" 'jp/switch-other-buffer)
 
 
+;; on a mac, i like command to be meta
+(if (eq system-type 'darwin)
+    (setq mac-command-modifier 'meta))
+
 (provide 'init-utils)

@@ -9,7 +9,7 @@
 	  vc-git-program git-exe)))
 
 
-(global-set-key (kbd "<f12>") 'magit-status)
+(global-set-key (kbd "M-<f12>") 'magit-status)
 
 
 (provide 'init-magit)
