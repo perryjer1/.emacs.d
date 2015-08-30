@@ -132,6 +132,24 @@
 (global-set-key (kbd "M-/") 'hippie-expand)
 
 
+;; ;; screen gets messed up sometimes
+;; (global-set-key (kbd "<f5>") 'redraw-display)
+
+;; ;; at work, i use gfind for windows
+;; (setq find-program "gfind")
+
+(load-theme 'deeper-blue)
+
+;; make Emacs a server
+;; some bug (related to git?) is messing up server-start
+;;   http://stackoverflow.com/questions/885793/emacs-error-when-calling-server-start
+;; i changed the owner of ~/.emacs.d/server as suggested in answer.
+(unless (server-running-p)
+  (server-start))
+
+
+(desktop-save-mode 1)
+
 ;; on a mac, i like command to be meta
 (if (eq system-type 'darwin)
     (setq mac-command-modifier 'meta))
