@@ -56,9 +56,9 @@
 (global-set-key (kbd "C-M-r") 'isearch-backward)
 
 ;; I often type C-x f but not because I want to set the fill
-(global-set-key "\C-xf" 'find-file)
+(global-set-key (kbd "C-x f") 'find-file)
 
-(global-set-key "\C-ct" 'toggle-truncate-lines)
+(global-set-key (kbd "C-c t") 'toggle-truncate-lines)
 
 (global-set-key (kbd "<f8>") 'window-configuration-to-register)
 (global-set-key (kbd "<f9>") 'jump-to-register)
@@ -69,16 +69,16 @@
   (revert-buffer nil t)
   (message "Reverted buffer '%s'" (buffer-name)))
 
-(global-set-key "\C-cr" 'jp/revert-buffer)
-(global-set-key "\C-cR" 'auto-revert-mode)
-(global-set-key "\C-cT" 'auto-revert-tail-mode)
+(global-set-key (kbd "C-c r") 'jp/revert-buffer)
+(global-set-key (kbd "C-c R") 'auto-revert-mode)
+(global-set-key (kbd "C-c T") 'auto-revert-tail-mode)
 
 (defun jp/dired-home ()
   "Dired my home directory."
   (interactive)
   (dired "~"))
 
-(global-set-key "\C-cj" 'jp/dired-home)
+(global-set-key (kbd "C-c j") 'jp/dired-home)
 
 ;; scrolling by default moves the screen too much for me
 (defun jp/scroll-left ()
@@ -117,7 +117,7 @@
       (kill-new file-name)
       (message "'%s' copied to clipboard." file-name))))
 
-(global-set-key "\C-cp" 'jp/copy-filename)
+(global-set-key (kbd "C-c p") 'jp/copy-filename)
 
 ;; switch back and forth quickly
 (defun jp/switch-other-buffer ()
@@ -125,7 +125,11 @@
   (interactive)
   (switch-to-buffer (other-buffer)))
 
-(global-set-key "\C-cb" 'jp/switch-other-buffer)
+(global-set-key (kbd "C-c b") 'jp/switch-other-buffer)
+
+
+;; use hippie expand
+(global-set-key (kbd "M-/") 'hippie-expand)
 
 
 ;; on a mac, i like command to be meta

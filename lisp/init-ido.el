@@ -8,6 +8,6 @@
 (setq ido-create-new-buffer 'always)
 (ido-mode t)
 
-(global-set-key "\C-ci" 'ido-mode)
+(global-set-key (kbd "C-c i") 'ido-mode)
 
 (provide 'init-ido)
