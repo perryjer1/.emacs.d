@@ -144,7 +144,8 @@
 ;; some bug (related to git?) is messing up server-start
 ;;   http://stackoverflow.com/questions/885793/emacs-error-when-calling-server-start
 ;; i changed the owner of ~/.emacs.d/server as suggested in answer.
-(unless (server-running-p)
+(require 'server)
+(if (not (server-running-p))
   (server-start))
 
 
