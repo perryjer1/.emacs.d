@@ -17,10 +17,10 @@
 (require 'racket-mode)
 (add-to-list 'auto-mode-alist '("\\.rkt$" . racket-mode))
 
-;; ;; add highlight-symbol
-;; (jp/install-if-needed 'highlight-symbol)
-;; (require 'highlight-symbol)
-;; (global-set-key (kbd "C-*") 'highlight-symbol-at-point)
+;; add highlight-symbol
+(jp/install-if-needed 'highlight-symbol)
+(require 'highlight-symbol)
+(global-set-key (kbd "C-*") 'highlight-symbol-at-point)
 
 
 ;;  https://github.com/ananthakumaran/monky
