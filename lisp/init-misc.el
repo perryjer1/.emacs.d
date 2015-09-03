@@ -29,4 +29,27 @@
 (setq monky-process-type 'cmdserver)
 
 
+;; setup file searches depending on what is available
+(defvar jp/file-search-command nil)
+
+(cond
+ ((executable-find "ag")
+  (jp/install-if-needed 'ag)
+  (require 'ag)
+  (setq jp/file-search-command 'ag))
+ ((executable-find "ack")
+  (jp/install-if-needed 'full-ack)
+  (require 'full-ack)
+  (setq jp/file-search-command 'ack))
+ ((executable-find "grep")
+  (setq jp/file-search-command 'grep))
+ (t nil))
+
+(defun jp/do-file-search ()
+  (interactive)
+  (call-interactively jp/file-search-command))
+
+(global-set-key (kbd "M-<f11>") 'jp/do-file-search)
+
+
 (provide 'init-misc)
