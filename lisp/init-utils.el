@@ -140,6 +140,12 @@
 (global-set-key (kbd "C-7") 'other-window)
 
 
+;; this makes some things easier to read when using emacs over putty
+(custom-set-faces
+ '(comint-highlight-prompt ((t (:weight bold))))
+ '(minibuffer-prompt ((t (:weight bold))))
+)
+
 ;; ;; screen gets messed up sometimes
 ;; (global-set-key (kbd "<f5>") 'redraw-display)
 
