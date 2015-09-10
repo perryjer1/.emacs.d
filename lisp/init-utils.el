@@ -92,7 +92,7 @@
   (scroll-right (/ (window-body-width) 3) t))
 
 (global-set-key (kbd "C-<next>") 'jp/scroll-left)
-(global-set-key (kbd "C-<prev>") 'jp/scroll-right)
+(global-set-key (kbd "C-<prior>") 'jp/scroll-right)
 
 ;; next set of functions is used to copy filename to clipboard
 (defun jp/get-filename-buffer ()
