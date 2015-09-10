@@ -132,6 +132,14 @@
 (global-set-key (kbd "M-/") 'hippie-expand)
 
 
+;; give window functions easier key bindings
+(global-set-key (kbd "C-0") 'delete-window)
+(global-set-key (kbd "C-1") 'delete-other-windows)
+(global-set-key (kbd "C-2") 'split-window-below)
+(global-set-key (kbd "C-3") 'split-window-right)
+(global-set-key (kbd "C-7") 'other-window)
+
+
 ;; ;; screen gets messed up sometimes
 ;; (global-set-key (kbd "<f5>") 'redraw-display)
 
