@@ -43,6 +43,9 @@
 ;; i don't like typing yes and no
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+;; turn off visible bell
+(setq ring-bell-function 'ignore)
+
 ;; turn off the toolbar
 (tool-bar-mode -1)
 
