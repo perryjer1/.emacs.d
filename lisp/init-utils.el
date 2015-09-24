@@ -55,7 +55,7 @@
 (tool-bar-mode -1)
 
 ;; turn on paren matching
-(show-paren-mode 1)
+(show-paren-mode +1)
 
 ;; default to regex search
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
@@ -173,7 +173,7 @@
   (server-start))
 
 
-(desktop-save-mode 1)
+(desktop-save-mode +1)
 
 ;; on a mac, i like command to be meta
 (if (eq system-type 'darwin)
