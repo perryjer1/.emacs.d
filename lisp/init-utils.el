@@ -147,6 +147,8 @@
 (global-set-key (kbd "C-3") 'split-window-right)
 (global-set-key (kbd "C-7") 'other-window)
 
+;; use winner mode
+(winner-mode +1)
 
 ;; this makes some things easier to read when using emacs over putty
 (custom-set-faces
