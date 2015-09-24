@@ -46,6 +46,11 @@
 ;; turn off visible bell
 (setq ring-bell-function 'ignore)
 
+;; make scrolling more bearable
+(setq scroll-margin 0
+      scroll-conservatively 100000
+      scroll-preserve-screen-position 1)
+
 ;; turn off the toolbar
 (tool-bar-mode -1)
 
