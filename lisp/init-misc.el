@@ -4,32 +4,46 @@
 ;; set matlab m-files to load in octave mode
 (add-to-list 'auto-mode-alist '("\\.m$" . octave-mode))
 
+
 ;; batch mode
 (jp/install-if-needed 'batch-mode)
 (require 'batch-mode)
 (autoload 'batch-mode "batch-mode" "Major mode for editing bat files." t)
 (add-to-list 'auto-mode-alist '("\\.bat$" . batch-mode))
 
+
 ;; yaml
 (jp/install-if-needed 'yaml-mode)
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+
 
 ;; racket
 (jp/install-if-needed 'racket-mode)
 (require 'racket-mode)
 (add-to-list 'auto-mode-alist '("\\.rkt$" . racket-mode))
 
-;; add highlight-symbol
+
+;; highlight-symbol
 (jp/install-if-needed 'highlight-symbol)
 (require 'highlight-symbol)
 (global-set-key (kbd "C-*") 'highlight-symbol-at-point)
 
 
-;;  https://github.com/ananthakumaran/monky
+;; monky: https://github.com/ananthakumaran/monky
 (jp/install-if-needed 'monky)
 (require 'monky)
 (setq monky-process-type 'cmdserver)
+
+
+;; expand region: https://github.com/magnars/expand-region.el
+(jp/install-if-needed 'expand-region)
+(require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
+
+
+;; browse kill ring: https://github.com/browse-kill-ring/browse-kill-ring
+(jp/install-if-needed 'browse-kill-ring)
 
 
 ;; setup file searches depending on what is available
