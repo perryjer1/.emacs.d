@@ -1,6 +1,9 @@
 ;;; Miscellaneous config stuff
 
 
+;; set matlab m-files to load in octave mode
+(add-to-list 'auto-mode-alist '("\\.m$" . octave-mode))
+
 ;; batch mode
 (jp/install-if-needed 'batch-mode)
 (require 'batch-mode)

@@ -15,6 +15,7 @@
 (require 'init-ido)
 (require 'init-recentf)
 (require 'init-windmove)
+(require 'init-uniquify)
 
 ;; third party packages
 (require 'init-exec-path)
