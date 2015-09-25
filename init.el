@@ -19,7 +19,6 @@
 
 ;; third party packages
 (require 'init-exec-path)
-(require 'init-avy)
 (require 'init-markdown)
 (require 'init-ess)
 (require 'init-python)

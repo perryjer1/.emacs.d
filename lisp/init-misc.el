@@ -36,6 +36,12 @@
 (global-set-key (kbd "M-g w") 'ace-window)
 
 
+;; avy: https://github.com/abo-abo/avy
+(jp/install-if-needed 'avy)
+(require 'avy)
+(global-set-key (kbd "M-g l") 'avy-goto-line)
+
+
 ;; monky: https://github.com/ananthakumaran/monky
 (jp/install-if-needed 'monky)
 (require 'monky)
