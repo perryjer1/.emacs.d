@@ -179,4 +179,4 @@
 (if (eq system-type 'darwin)
     (setq mac-command-modifier 'meta))
 
-(provide 'init-utils)
+(provide 'init-settings)

@@ -7,7 +7,7 @@
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
-(require 'init-utils)
+(require 'init-settings)
 (require 'init-package)
 
 ;; built-in packages
