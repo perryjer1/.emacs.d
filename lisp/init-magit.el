@@ -3,7 +3,7 @@
 (require 'magit)
 
 
-(global-set-key (kbd "M-<f12>") 'magit-status)
+(global-set-key (kbd "C-x g") 'magit-status)
 
 (when (eql system-type 'windows-nt)
   (setenv "GIT_ASKPASS" "git-gui--askpass"))

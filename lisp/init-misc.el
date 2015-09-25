@@ -33,7 +33,7 @@
 ;; ace window: https://github.com/abo-abo/ace-window
 (jp/install-if-needed 'ace-window)
 (require 'ace-window)
-(global-set-key (kbd "M-g w") 'ace-window)
+(global-set-key (kbd "M-p") 'ace-window)
 
 
 ;; avy: https://github.com/abo-abo/avy
