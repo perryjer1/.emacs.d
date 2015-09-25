@@ -42,6 +42,12 @@
 (global-set-key (kbd "M-g l") 'avy-goto-line)
 
 
+;; smex
+(jp/install-if-needed 'smex)
+(require 'smex)
+(global-set-key (kbd "M-x") 'smex)
+
+
 ;; monky: https://github.com/ananthakumaran/monky
 (jp/install-if-needed 'monky)
 (require 'monky)

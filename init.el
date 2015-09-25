@@ -22,6 +22,5 @@
 (require 'init-markdown)
 (require 'init-ess)
 (require 'init-python)
-(require 'init-smex)
 (require 'init-magit)
 (require 'init-misc)
