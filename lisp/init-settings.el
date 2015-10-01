@@ -15,8 +15,8 @@
 ;; C-k kills new line
 (setq kill-whole-line t)
 
-;; Don't give file too big warning unless file is > 50MB
-(setq large-file-warning-threshold (* 50 1000 1000))
+;; Don't give file too big warning unless file is > 100MB
+(setq large-file-warning-threshold (* 100 1000 1000))
 
 ;; emacs will prompt before closing
 (setq confirm-kill-emacs 'yes-or-no-p)
@@ -62,6 +62,12 @@
 
 ;; turn on paren matching
 (show-paren-mode +1)
+
+;; use desktop save mode
+(desktop-save-mode +1)
+
+;; use winner mode
+(winner-mode +1)
 
 ;; default to regex search
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
@@ -153,9 +159,6 @@
 (global-set-key (kbd "C-3") 'split-window-right)
 (global-set-key (kbd "C-7") 'other-window)
 
-;; use winner mode
-(winner-mode +1)
-
 ;; this makes some things easier to read when using emacs over putty
 (custom-set-faces
  '(comint-highlight-prompt ((t (:weight bold))))
@@ -178,8 +181,6 @@
 (if (not (server-running-p))
   (server-start))
 
-
-(desktop-save-mode +1)
 
 ;; on a mac, i like command to be meta
 (if (eq system-type 'darwin)
