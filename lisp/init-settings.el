@@ -54,6 +54,12 @@
 ;; turn off the toolbar
 (tool-bar-mode -1)
 
+;; turn off the scroll bars
+(scroll-bar-mode -1)
+
+;; don't blink the cursor
+(blink-cursor-mode -1)
+
 ;; turn on paren matching
 (show-paren-mode +1)
 
