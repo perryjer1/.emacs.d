@@ -12,6 +12,7 @@
 (setq ibuffer-saved-filter-groups
       `(("default"
 	 ("Dired" (mode . dired-mode))
+	 ("Org" (mode . org-mode))
 	 ("Python" (or (mode . python-mode)
 		       (name . "^\\*Python\\*$")))
 	 ("R" (or (name . "^\\*R\\*$")
