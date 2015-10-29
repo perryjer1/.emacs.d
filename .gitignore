@@ -6,3 +6,4 @@ backups/*
 .emacs.desktop*
 smex-items
 /tramp
+/config.el
