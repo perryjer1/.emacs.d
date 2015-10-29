@@ -1,8 +1,6 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;                                                                          ;;
-;;                                  Init.el                                 ;;
-;;                                                                          ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; init.el
+
+;; moving over to org-babel loading soon...
 
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
