@@ -1,0 +1,631 @@
+#+TITLE: My Emacs Config
+
+* Global settings
+
+** Global variables
+
+#+BEGIN_SRC emacs-lisp
+
+  ;; move stuff to trash instead of vaporize
+  (setq delete-by-moving-to-trash t)
+
+  ;; don't show the start up screen
+  (setq inhibit-startup-screen t)
+
+  ;; word wrap off by default
+  (setq-default truncate-lines t)
+
+  ;; show column numbers in mode line
+  (setq column-number-mode t)
+
+  ;; C-k kills new line
+  (setq kill-whole-line t)
+
+  ;; Only use one space for sentences
+  (setq sentence-end-double-space nil)
+
+  ;; Don't give file too big warning unless file is > 50MB
+  (setq large-file-warning-threshold (* 50 1000 1000))
+
+  ;; emacs will prompt before closing
+  (setq confirm-kill-emacs 'yes-or-no-p)
+
+  ;; allow C-u C-<SPC> C-<SPC> to cycle mark ring
+  (setq set-mark-command-repeat-pop t)
+
+  ;; backup file stuff
+  (setq backup-directory-alist `(("." . ,(concat user-emacs-directory "backups")))
+        backup-by-copying t
+        delete-old-versions t
+        kept-new-versions 6
+        kept-old-versions 2)
+
+  ;; make ediff split vertically by default (which emacs calls horizontal)
+  (setq ediff-split-window-function 'split-window-horizontally
+        ediff-merge-split-window-function 'split-window-horizontally)
+
+  ;; enable commands
+  (put 'scroll-left 'disabled nil)
+  (put 'upcase-region 'disabled nil)
+  (put 'downcase-region 'disabled nil)
+
+  ;; i don't like typing yes and no
+  (defalias 'yes-or-no-p 'y-or-n-p)
+
+  ;; turn off visible bell
+  (setq ring-bell-function 'ignore)
+
+  ;; make scrolling more bearable
+  (setq scroll-margin 0
+        scroll-conservatively 100000
+        scroll-preserve-screen-position 1)
+
+  ;; turn off the toolbar
+  (tool-bar-mode -1)
+
+  ;; turn on paren matching
+  (show-paren-mode +1)
+
+  ;; highlight current line
+  (global-hl-line-mode +1)
+
+  ;; use winner mode
+  (winner-mode +1)
+
+  ;; save desktop
+  (desktop-save-mode +1)
+
+  ;; revert buffers automatically
+  (global-auto-revert-mode +1)
+
+  ;; and do the dired buffers too
+  (setq global-auto-revert-non-file-buffers t)
+
+#+END_SRC
+
+** Global key bindings
+
+#+BEGIN_SRC emacs-lisp
+
+  ;; default to regex search
+  (global-set-key (kbd "C-s") 'isearch-forward-regexp)
+  (global-set-key (kbd "C-r") 'isearch-backward-regexp)
+  (global-set-key (kbd "C-M-s") 'isearch-forward)
+  (global-set-key (kbd "C-M-r") 'isearch-backward)
+
+  ;; I often type C-x f but not because I want to set the fill
+  (global-set-key (kbd "C-x f") 'find-file)
+
+  (global-set-key (kbd "C-c t") 'toggle-truncate-lines)
+
+  ;; buffer reverting
+  (global-set-key (kbd "C-c r") 'revert-buffer)
+  (global-set-key (kbd "C-c R") 'auto-revert-mode)
+  (global-set-key (kbd "C-c T") 'auto-revert-tail-mode)
+
+  ;; use hippie expand
+  (global-set-key (kbd "M-/") 'hippie-expand)
+
+  ;; give window functions easier key bindings
+  (global-set-key (kbd "C-0") 'delete-window)
+  (global-set-key (kbd "C-1") 'delete-other-windows)
+  (global-set-key (kbd "C-2") 'split-window-below)
+  (global-set-key (kbd "C-3") 'split-window-right)
+  (global-set-key (kbd "C-7") 'other-window)
+
+  ;; switch to 'apropos' instead of 'apropos-command'
+  (global-set-key (kbd "C-h a") 'apropos)
+
+#+END_SRC
+
+** Global functions (with key bindings too)
+
+*** Copy filename
+
+Next set of functions is used to copy filename to clipboard.
+
+#+BEGIN_SRC emacs-lisp
+
+  (defun jp/get-filename-buffer ()
+    "Gets filename of current buffer."
+    (interactive)
+    (let ((buffer (current-buffer)))
+      (when buffer (buffer-file-name buffer))))
+
+  (defun jp/get-filename-dired ()
+    "Gets filename of current dired line."
+    (interactive)
+    (dired-get-filename nil t))
+
+  (defun jp/copy-filename ()
+    "Copy filename of buffer or dired line to clipboard."
+    (interactive)
+    (let ((file-name
+           (if (derived-mode-p 'dired-mode)
+               (jp/get-filename-dired)
+             (jp/get-filename-buffer))))
+      (when file-name
+        (kill-new file-name)
+        (message "'%s' copied to clipboard." file-name))))
+
+  (global-set-key (kbd "C-c p") 'jp/copy-filename)
+
+#+END_SRC
+
+*** Switch buffer
+
+#+BEGIN_SRC emacs-lisp
+
+  ;; switch back and forth quickly
+  (defun jp/switch-other-buffer ()
+    "Switch to other buffer without prompting."
+    (interactive)
+    (switch-to-buffer (other-buffer)))
+
+  (global-set-key (kbd "C-c b") 'jp/switch-other-buffer)
+
+#+END_SRC
+
+*** Scrolling
+
+#+BEGIN_SRC emacs-lisp
+
+  ;; scrolling by default moves the screen too much for me
+  (defun jp/scroll-left ()
+    "Scrolls the window one third to the left."
+    (interactive)
+    (scroll-left (/ (window-body-width) 3) t))
+
+  (defun jp/scroll-right ()
+    "Scrolls the window one third to the right."
+    (interactive)
+    (scroll-right (/ (window-body-width) 3) t))
+
+  (global-set-key (kbd "C-<next>") 'jp/scroll-left)
+  (global-set-key (kbd "C-<prior>") 'jp/scroll-right)
+
+#+END_SRC
+
+*** Revert buffer
+
+#+BEGIN_SRC emacs-lisp
+
+  (defun jp/revert-buffer ()
+    "Revert buffer."
+    (interactive)
+    (revert-buffer nil t)
+    (message "Reverted buffer '%s'" (buffer-name)))
+
+#+END_SRC
+
+** Theme and custom faces
+
+#+BEGIN_SRC emacs-lisp
+
+  (load-theme 'deeper-blue)
+
+  ;; this makes some things easier to read when using emacs over putty
+  (custom-set-faces
+   '(comint-highlight-prompt ((t (:weight bold))))
+   '(minibuffer-prompt ((t (:weight bold))))
+  )
+
+#+END_SRC
+
+** System specific
+*** Mac
+
+#+BEGIN_SRC emacs-lisp
+
+  ;; on a mac, i like command to be meta
+  (if (eq system-type 'darwin)
+      (setq mac-command-modifier 'meta))
+
+#+END_SRC
+
+* Standard Emacs packages
+
+** 'org'
+
+#+BEGIN_SRC emacs-lisp
+
+  (setq org-src-fontify-natively t)
+  (setq org-src-tab-acts-natively t)
+
+#+END_SRC
+
+** 'recentf'
+
+See [[http://www.emacswiki.org/emacs/RecentFiles][recentf]].
+
+#+BEGIN_SRC emacs-lisp
+
+  (require 'recentf)
+
+  (recentf-mode t)
+  (setq recentf-max-menu-items 100)
+  (global-set-key (kbd "C-x C-r") 'recentf-open-files)
+
+#+END_SRC
+
+** 'ibuffer'
+
+See [[http://www.emacswiki.org/emacs/IbufferMode][ibuffer]].
+
+#+BEGIN_SRC emacs-lisp
+
+  (require 'ibuffer)
+
+  (global-set-key (kbd "C-x C-b") 'ibuffer)
+  (autoload 'ibuffer "ibuffer" "List buffers." t)
+
+  ;; don't prompt every time I close buffers
+  ;; http://martinowen.net/blog/2010/02/03/tips-for-emacs-ibuffer.html
+  (setq ibuffer-expert t)
+
+  (setq ibuffer-saved-filter-groups
+        `(("default"
+           ("Dired" (mode . dired-mode))
+           ("Python" (or (mode . python-mode)
+                         (name . "^\\*Python\\*$")))
+           ("R" (or (name . "^\\*R\\*$")
+                    (mode . ess-mode)
+                    (mode . ess-help-mode)))
+           ("Emacs Lisp" (or (mode . emacs-lisp-mode)
+                             (filename . ,(expand-file-name "~/.emacs"))))
+           ("Stuff" (or (mode . Man-mode)
+                        (mode . woman-mode)
+                        (mode . Info-mode)
+                        (mode . Help-mode)
+                        (mode . help-mode)
+                        (name . "^\\*"))))))
+
+  (add-hook 'ibuffer-mode-hook
+                (lambda ()
+                  (ibuffer-switch-to-saved-filter-groups "default")))
+
+#+END_SRC
+
+** 'ido'
+
+#+BEGIN_SRC emacs-lisp
+
+  (require 'ido)
+
+  (setq ido-enable-flex-matching t)
+  (setq ido-everywhere t)
+
+  ;; don't prompt to make a new buffer
+  (setq ido-create-new-buffer 'always)
+  (ido-mode t)
+
+  (global-set-key (kbd "C-c i") 'ido-mode)
+
+#+END_SRC
+
+** 'uniquify'
+
+~uniquify~ makes the buffer names unique with path included.
+
+#+BEGIN_SRC emacs-lisp
+
+  (require 'uniquify)
+
+  (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+
+#+END_SRC
+
+** 'windmove'
+
+#+BEGIN_SRC emacs-lisp
+
+  (require 'windmove)
+
+  (windmove-default-keybindings)
+
+  ;; Make windmove work in org-mode:
+  (add-hook 'org-shiftup-final-hook 'windmove-up)
+  (add-hook 'org-shiftleft-final-hook 'windmove-left)
+  (add-hook 'org-shiftdown-final-hook 'windmove-down)
+  (add-hook 'org-shiftright-final-hook 'windmove-right)
+
+#+END_SRC
+
+** 'server'
+
+Make Emacs a server. Some bug (windows file permissions?) is messing
+up server-start.  See [[http://stackoverflow.com/questions/885793/emacs-error-when-calling-server-start][this stackoverflow]] question. I changed the owner
+of ~/.emacs.d/server as suggested in answer.
+
+#+BEGIN_SRC emacs-lisp
+
+  (require 'server)
+  (if (not (server-running-p))
+    (server-start))
+
+#+END_SRC
+
+* Third party packages
+
+** Setup 'package'
+
+#+BEGIN_SRC emacs-lisp
+
+  (require 'package)
+
+  (setq package-archives
+    `(("gnu" . "http://elpa.gnu.org/packages/")
+      ("melpa" . "http://melpa.org/packages/")
+      ("marmalade" . "http://marmalade-repo.org/packages/")))
+
+  (package-initialize)
+
+
+  ;; (defvar jp/packages-refreshed? nil
+  ;;   "For use in `jp/install-if-needed` to only refresh package contents once.")
+
+
+  ;; (defun jp/install-if-needed (pkg)
+  ;;   "Installs a package if it isn't installed already."
+  ;;   (unless (or (assoc pkg package-archive-contents) jp/packages-refreshed?)
+  ;;     (package-refresh-contents)
+  ;;     (setq jp/packages-refreshed? t))
+  ;;   (if (package-installed-p pkg)
+  ;;       t
+  ;;     (package-install pkg)))
+
+#+END_SRC
+
+** Install 'use-package'
+
+#+BEGIN_SRC emacs-lisp
+
+  (unless (package-installed-p 'use-package)
+    (package-refresh-contents)
+    (package-install 'use-package))
+    
+  (require 'use-package)
+  (setq use-package-always-ensure t)
+
+#+END_SRC
+
+** 'yaml-mode'
+
+#+BEGIN_SRC emacs-lisp
+
+  (use-package yaml-mode
+    :mode ("\\.yml$" . yaml-mode))
+
+#+END_SRC
+
+** 'batch-mode'
+
+#+BEGIN_SRC emacs-lisp
+
+  (use-package batch-mode
+    :mode ("\\.bat$" . batch-mode))
+
+#+END_SRC
+
+** 'octave'
+
+This isn't really a third party package but I set it up with
+~use-package~. Set Matlab m-files to load in octave mode.
+
+#+BEGIN_SRC emacs-lisp
+
+  (use-package octave
+    :mode ("\\.m$" . octave-mode))
+
+#+END_SRC
+
+** 'racket-mode'
+
+#+BEGIN_SRC emacs-lisp
+
+  (use-package racket-mode
+    :mode ("\\.rkt$" . racket-mode))
+
+#+END_SRC
+
+** 'markdown-mode'
+
+#+BEGIN_SRC emacs-lisp
+
+  (use-package markdown-mode
+    :mode ("\\.md$" . markdown-mode)
+    :mode ("\\.markdown$" . markdown-mode))
+
+#+END_SRC
+
+** 'ess'
+
+#+BEGIN_SRC emacs-lisp
+
+(use-package ess)
+
+(require 'ess-site)
+
+;; don't ask for starting directory
+(setq ess-ask-for-ess-directory nil)
+
+;; just use this as the starting directory
+(setq ess-directory "~")
+
+(add-hook 'ess-mode-hook
+	  (lambda ()
+	    (setq ess-default-style 'GNU)))
+
+
+;; modified from comint-dynamic-list-input-ring
+(defun jp/r-history ()
+  "Display R history."
+  (interactive)
+  (if (or (not (ring-p comint-input-ring))
+		  (ring-empty-p comint-input-ring))
+      (message "No history")
+    (let ((history nil)
+		  (history-buffer " *R History*")
+		  (conf (current-window-configuration)))
+      ;; We have to build up a list ourselves from the ring vector.
+      (dotimes (index (ring-length comint-input-ring))
+		(push (ring-ref comint-input-ring index) history))
+	  (with-output-to-temp-buffer history-buffer
+		(with-current-buffer standard-output
+		  (mapcar (lambda (x) (insert x) (insert "\n")) history))))))
+
+#+END_SRC
+
+** 'magit'
+
+*** TODO I don't know if ~use-package~ here works.
+
+#+BEGIN_SRC emacs-lisp
+
+  (use-package magit
+    :bind ("C-x g" . magit-status)
+    :config
+    (if (eql system-type 'windows-nt)
+        (setenv "GIT_ASKPASS" "git-gui--askpass")))
+
+#+END_SRC
+
+** 'smex'
+
+#+BEGIN_SRC emacs-lisp
+
+  ;; smex
+  (use-package smex
+    :bind ("M-x" . smex))
+
+#+END_SRC
+
+** 'browse-kill-ring'
+
+See [[https://github.com/browse-kill-ring/browse-kill-ring][brose-kill-ring]].
+
+#+BEGIN_SRC emacs-lisp
+
+  (use-package browse-kill-ring)
+
+#+END_SRC
+
+** 'expand-region'
+
+See [[https://github.com/magnars/expand-region.el][expand-region]].
+
+#+BEGIN_SRC emacs-lisp
+
+  (use-package expand-region
+    :bind ("C-=" . er/expand-region))
+
+#+END_SRC
+
+** 'exec-path-from-shell'
+
+*** TODO I don't know if ~use-package~ here works.
+
+#+BEGIN_SRC emacs-lisp
+
+  (use-package exec-path-from-shell
+    :config
+    (if (memq window-system '(mac ns))
+        (exec-path-from-shell-initialize)))
+
+#+END_SRC
+
+** 'highlight-symbol
+
+#+BEGIN_SRC emacs-lisp
+
+  (use-package highlight-symbol
+    :bind ("C-*" . highlight-symbol-at-point))
+
+#+END_SRC
+
+** 'ace-window'
+
+See [[https://github.com/abo-abo/ace-window][ace-window]] on github.
+
+#+BEGIN_SRC emacs-lisp
+
+  (use-package ace-window
+    :bind ("M-p" . ace-window))
+
+#+END_SRC
+
+** 'avy'
+
+See [[https://github.com/abo-abo/avy][avy]] on github.
+
+#+BEGIN_SRC emacs-lisp
+
+  (use-package avy
+    :bind ("M-g l" . avy-goto-line))
+
+#+END_SRC
+
+** 'monky'
+
+See [[https://github.com/ananthakumaran/monky][monky]] on github.
+
+#+BEGIN_SRC emacs-lisp
+
+  (use-package monky
+    :config
+    (setq monky-process-type 'cmdserver))
+
+#+END_SRC
+
+** 'flymake'
+
+#+BEGIN_SRC emacs-lisp
+
+(use-package flymake)
+
+#+END_SRC
+
+* Temp
+
+** Python
+
+#+BEGIN_SRC emacs-lisp
+
+  ;; (require 'python-mode)
+
+  ;; (setq py-shell-name "ipython")
+
+  ;; (setq
+  ;; ; python-shell-interpreter "C:\\Anaconda\\python.exe"
+  ;;  python-shell-interpreter "C:\\Anaconda\\Scripts\\ipython.exe"
+  ;; ; python-shell-interpreter-args
+  ;; ;   "-i C:\\Anaconda\\Scripts\\ipython-script.py"
+  ;; ; python-shell-interpreter "ipython"
+  ;; ; python-shell-interpreter-args ""
+  ;;  python-shell-prompt-regexp "In \\[[0-9]+\\]: "
+  ;;  python-shell-prompt-output-regexp "Out\\[[0-9]+\\]: "
+  ;;  python-shell-completion-setup-code
+  ;;    "from IPython.core.completerlib import module_completion"
+  ;;  python-shell-completion-module-string-code
+  ;;    "';'.join(module_completion('''%s'''))\n"
+  ;;  python-shell-completion-string-code
+  ;;    "';'.join(get_ipython().Completer.all_completions('''%s'''))\n")
+
+  (setq python-shell-interpreter "ipython")
+
+#+END_SRC
+** C#
+
+For some reason, csharp-mode messes with reverting buffers, something
+about flymake-mode interaction. Requiring ~flymake~ fixed it.
+
+#+BEGIN_SRC emacs-lisp
+
+  (use-package csharp-mode
+    :mode ("\\.cs$" . csharp-mode)
+    :config
+    (add-hook 'csharp-mode-hook (lambda () (setq default-tab-width 4))))
+
+  (require 'flymake)
+
+#+END_SRC
