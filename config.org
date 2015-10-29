@@ -24,6 +24,12 @@
   ;; Only use one space for sentences
   (setq sentence-end-double-space nil)
 
+  ;; This will show the current key combo in minbuffer sooner
+  (setq echo-keystrokes 0.1)
+
+  ;; For fill, 80 chars seems like a better default
+  (setq fill-column 80)
+
   ;; Don't give file too big warning unless file is > 50MB
   (setq large-file-warning-threshold (* 50 1000 1000))
 
@@ -62,6 +68,9 @@
 
   ;; turn off the toolbar
   (tool-bar-mode -1)
+
+  ;; turn off blinking cursor
+  (blink-cursor-mode -1)
 
   ;; turn on paren matching
   (show-paren-mode +1)
@@ -112,6 +121,7 @@
   (global-set-key (kbd "C-2") 'split-window-below)
   (global-set-key (kbd "C-3") 'split-window-right)
   (global-set-key (kbd "C-7") 'other-window)
+  (global-set-key (kbd "C-c y") 'bury-buffer)
 
   ;; switch to 'apropos' instead of 'apropos-command'
   (global-set-key (kbd "C-h a") 'apropos)
@@ -242,7 +252,7 @@ See [[http://www.emacswiki.org/emacs/RecentFiles][recentf]].
 
   (require 'recentf)
 
-  (recentf-mode t)
+  (recentf-mode +1)
   (setq recentf-max-menu-items 100)
   (global-set-key (kbd "C-x C-r") 'recentf-open-files)
 
@@ -303,6 +313,18 @@ See [[http://www.emacswiki.org/emacs/IbufferMode][ibuffer]].
 
 #+END_SRC
 
+Seems that we need to set ~confirm-nonexistent-file-or-buffer~ to nil
+to get ~ido~ and other functions to not ask if it's okay to make a new
+buffer...
+
+#+BEGIN_SRC emacs-lisp
+
+  (defadvice ido-switch-buffer (around no-confirmation activate)
+    (let ((confirm-nonexistent-file-or-buffer nil))
+      ad-do-it))
+
+#+END_SRC
+
 ** 'uniquify'
 
 ~uniquify~ makes the buffer names unique with path included.
@@ -311,7 +333,8 @@ See [[http://www.emacswiki.org/emacs/IbufferMode][ibuffer]].
 
   (require 'uniquify)
 
-  (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+  ;;(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+  (setq uniquify-buffer-name-style 'forward)
 
 #+END_SRC
 
@@ -540,6 +563,15 @@ See [[https://github.com/magnars/expand-region.el][expand-region]].
 
   (use-package highlight-symbol
     :bind ("C-*" . highlight-symbol-at-point))
+
+#+END_SRC
+
+** 'windresize'
+
+#+BEGIN_SRC emacs-lisp
+
+  (use-package windresize
+    :bind ("C-c w" . windresize))
 
 #+END_SRC
 
