@@ -5,3 +5,4 @@ server/*
 backups/*
 .emacs.desktop*
 smex-items
+/tramp
