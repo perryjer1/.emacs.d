@@ -1,3 +1,6 @@
 * Emacs configuration
 
-This is my .emacs.d, influenced by [[https://github.com/purcell/emacs.d][Purcell's .emacs.d]].
+This is my .emacs.d, influenced by:
+ - [[https://github.com/purcell/emacs.d][Purcell's .emacs.d]]
+ - [[https://github.com/eschulte/emacs24-starter-kit][Emacs starter kit]]
+ - [[https://github.com/milkypostman/dotemacs][Milkypostman's dotemacs]]
