@@ -670,3 +670,25 @@ about flymake-mode interaction. Requiring ~flymake~ fixed it.
   (require 'flymake)
 
 #+END_SRC
+** 'ispell'
+
+#+BEGIN_SRC emacs-lisp
+
+  (require 'ispell)
+
+  (when (eql window-system 'w32)
+    (add-to-list 'exec-path "C:/Program Files (x86)/Aspell/bin/")
+    (setq ispell-program-name "aspell"))
+
+
+#+END_SRC
+
+** 'auctex'
+
+#+BEGIN_SRC emacs-lisp
+
+;  (use-package auctex
+;    :config
+;    (setq TeX-PDF-mode t))
+
+#+END_SRC
