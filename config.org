@@ -46,6 +46,9 @@
         kept-new-versions 6
         kept-old-versions 2)
 
+  ;; auto-save file stuff
+  (setq auto-save-file-name-transforms `((".*" . ,(concat user-emacs-directory "autosave") t)))
+
   ;; make ediff split vertically by default (which emacs calls horizontal)
   (setq ediff-split-window-function 'split-window-horizontally
         ediff-merge-split-window-function 'split-window-horizontally)
@@ -123,8 +126,14 @@
   (global-set-key (kbd "C-7") 'other-window)
   (global-set-key (kbd "C-c y") 'bury-buffer)
 
+  ;; seems a bit overkill to give 'suspend-frame' two bindings
+  (global-set-key (kbd "C-x C-z") 'repeat-complex-command)
+
   ;; switch to 'apropos' instead of 'apropos-command'
   (global-set-key (kbd "C-h a") 'apropos)
+
+  ;; put menu on <f2>, then we can use the M-` key for ace-window
+  (global-set-key (kbd "<f2>") 'tmm-menubar)
 
 #+END_SRC
 
@@ -582,7 +591,7 @@ See [[https://github.com/abo-abo/ace-window][ace-window]] on github.
 #+BEGIN_SRC emacs-lisp
 
   (use-package ace-window
-    :bind ("M-p" . ace-window))
+    :bind ("M-`" . ace-window))
 
 #+END_SRC
 
