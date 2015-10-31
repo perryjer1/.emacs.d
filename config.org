@@ -47,7 +47,7 @@
         kept-old-versions 2)
 
   ;; auto-save file stuff
-  (setq auto-save-file-name-transforms `((".*" . ,(concat user-emacs-directory "autosave") t)))
+  (setq auto-save-file-name-transforms `((".*" ,(concat user-emacs-directory "autosave") t)))
 
   ;; make ediff split vertically by default (which emacs calls horizontal)
   (setq ediff-split-window-function 'split-window-horizontally
