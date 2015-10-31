@@ -118,14 +118,6 @@
   ;; use hippie expand
   (global-set-key (kbd "M-/") 'hippie-expand)
 
-  ;; give window functions easier key bindings
-  (global-set-key (kbd "C-0") 'delete-window)
-  (global-set-key (kbd "C-1") 'delete-other-windows)
-  (global-set-key (kbd "C-2") 'split-window-below)
-  (global-set-key (kbd "C-3") 'split-window-right)
-  (global-set-key (kbd "C-7") 'other-window)
-  (global-set-key (kbd "C-c y") 'bury-buffer)
-
   ;; seems a bit overkill to give 'suspend-frame' two bindings
   (global-set-key (kbd "C-x C-z") 'repeat-complex-command)
 
@@ -171,7 +163,7 @@ Next set of functions is used to copy filename to clipboard.
 
 #+END_SRC
 
-*** Switch buffer
+*** Buffer and window management
 
 #+BEGIN_SRC emacs-lisp
 
@@ -181,7 +173,25 @@ Next set of functions is used to copy filename to clipboard.
     (interactive)
     (switch-to-buffer (other-buffer)))
 
-  (global-set-key (kbd "C-c b") 'jp/switch-other-buffer)
+
+  (defun jp/windows-manage (arg)
+  "Fancy window selection.
+With no prefix, call `other-window'.
+With one \\[universal-argument], call `ace-swap-window'.
+With two \\[universal-argument], call `windresize'."
+  (interactive "p")
+  (cl-case arg
+    (4 (ace-swap-window))
+    (16 (windresize))
+    (t (other-window 1))))
+
+
+  ;; give window functions easier key bindings
+  (global-set-key (kbd "M-0") 'delete-window)
+  (global-set-key (kbd "M-1") 'delete-other-windows)
+  (global-set-key (kbd "M-2") 'jp/switch-other-buffer)
+  (global-set-key (kbd "M-9") 'bury-buffer)
+  (global-set-key (kbd "M-`") 'jp/windows-manage)
 
 #+END_SRC
 
@@ -590,8 +600,7 @@ See [[https://github.com/abo-abo/ace-window][ace-window]] on github.
 
 #+BEGIN_SRC emacs-lisp
 
-  (use-package ace-window
-    :bind ("M-`" . ace-window))
+  (use-package ace-window)
 
 #+END_SRC
 
