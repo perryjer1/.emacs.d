@@ -589,8 +589,7 @@ See [[https://github.com/magnars/expand-region.el][expand-region]].
 
 #+BEGIN_SRC emacs-lisp
 
-  (use-package windresize
-    :bind ("C-c w" . windresize))
+  (use-package windresize)
 
 #+END_SRC
 
