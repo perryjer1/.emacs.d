@@ -233,6 +233,14 @@ With two \\[universal-argument], call `windresize'."
 
 #+END_SRC
 
+** Registers
+
+#+BEGIN_SRC emacs-lisp
+
+  (set-register ?c '(file . "~/.emacs.d/config.org"))
+
+#+END_SRC
+
 ** Theme and custom faces
 
 #+BEGIN_SRC emacs-lisp
