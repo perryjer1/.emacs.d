@@ -72,6 +72,9 @@
         mouse-wheel-progressive-speed nil
         mouse-wheel-scroll-amount '(1 ((shift) . 5)))
 
+  ;; default to unified diffs
+  (setq diff-switches "-u")
+
   ;; turn off the toolbar
   (tool-bar-mode -1)
 
