@@ -534,8 +534,6 @@ This isn't really a third party package but I set it up with
 
 ** 'magit'
 
-*** TODO I don't know if ~use-package~ here works.
-
 #+BEGIN_SRC emacs-lisp
 
   (use-package magit
@@ -578,8 +576,6 @@ See [[https://github.com/magnars/expand-region.el][expand-region]].
 #+END_SRC
 
 ** 'exec-path-from-shell'
-
-*** TODO I don't know if ~use-package~ here works.
 
 #+BEGIN_SRC emacs-lisp
 
