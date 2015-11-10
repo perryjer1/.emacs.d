@@ -275,6 +275,9 @@ With two \\[universal-argument], call `windresize'."
   (setq org-src-fontify-natively t)
   (setq org-src-tab-acts-natively t)
 
+  ;; make <RET> follow links
+  (setq org-return-follows-link t)
+
 #+END_SRC
 
 ** 'recentf'
