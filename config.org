@@ -75,6 +75,10 @@
   ;; default to unified diffs
   (setq diff-switches "-u")
 
+  ;; don't split screen side by side
+  ;; not sure how i feel about this yet...
+  ;(setq split-width-threshold nil)
+
   ;; turn off the toolbar
   (tool-bar-mode -1)
 
