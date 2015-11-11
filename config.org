@@ -390,6 +390,20 @@ buffer...
 
 #+END_SRC
 
+** 'ispell'
+
+#+BEGIN_SRC emacs-lisp
+
+  (require 'ispell)
+
+  (when (eql window-system 'w32)
+    (add-to-list 'exec-path "C:/Program Files (x86)/Aspell/bin/")
+    (setq ispell-program-name "aspell"))
+
+  (add-hook 'text-mode-hook 'flyspell-mode)
+
+#+END_SRC
+
 ** 'server'
 
 Make Emacs a server. Some bug (windows file permissions?) is messing
@@ -691,20 +705,6 @@ about flymake-mode interaction. Requiring ~flymake~ fixed it.
   (require 'flymake)
 
 #+END_SRC
-** 'ispell'
-
-#+BEGIN_SRC emacs-lisp
-
-  (require 'ispell)
-
-  (when (eql window-system 'w32)
-    (add-to-list 'exec-path "C:/Program Files (x86)/Aspell/bin/")
-    (setq ispell-program-name "aspell"))
-
-  (add-hook 'text-mode-hook 'flyspell-mode)
-
-#+END_SRC
-
 ** 'auctex'
 
 #+BEGIN_SRC emacs-lisp
