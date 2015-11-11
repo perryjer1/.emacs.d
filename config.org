@@ -78,6 +78,8 @@
   ;; don't split screen side by side
   ;; not sure how i feel about this yet...
   ;(setq split-width-threshold nil)
+  ;; don't split screen up and down
+  ;(setq split-height-threshold nil)
 
   ;; turn off the toolbar
   (tool-bar-mode -1)
