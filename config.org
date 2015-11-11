@@ -701,6 +701,7 @@ about flymake-mode interaction. Requiring ~flymake~ fixed it.
     (add-to-list 'exec-path "C:/Program Files (x86)/Aspell/bin/")
     (setq ispell-program-name "aspell"))
 
+  (add-hook 'text-mode-hook 'flyspell-mode)
 
 #+END_SRC
 
