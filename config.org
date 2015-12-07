@@ -408,6 +408,9 @@ buffer...
 
   (add-hook 'text-mode-hook 'flyspell-mode)
 
+  ;; this doesn't belong in ispell but it goes on text-mode-hook
+  (add-hook 'text-mode-hook 'auto-fill-mode)
+
 #+END_SRC
 
 ** 'server'
