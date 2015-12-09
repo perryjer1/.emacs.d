@@ -244,6 +244,8 @@ With two \\[universal-argument], call `windresize'."
 #+BEGIN_SRC emacs-lisp
 
   (set-register ?c '(file . "~/.emacs.d/config.org"))
+  (set-register ?n '(file . "~/Dropbox/Org/notes.org"))
+  (set-register ?j '(file . "~/Dropbox/Org/journal.org"))
 
 #+END_SRC
 
