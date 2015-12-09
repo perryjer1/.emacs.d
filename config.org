@@ -286,6 +286,9 @@ With two \\[universal-argument], call `windresize'."
   ;; make <RET> follow links
   (setq org-return-follows-link t)
 
+  ;; change the ... in outline mode
+  (setq org-ellipsis " >")
+
 #+END_SRC
 
 ** 'recentf'
