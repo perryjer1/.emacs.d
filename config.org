@@ -199,10 +199,14 @@ With two \\[universal-argument], call `windresize'."
 
 
   ;; give window functions easier key bindings
-  (global-set-key (kbd "M-0") 'delete-window)
   (global-set-key (kbd "M-1") 'delete-other-windows)
-  (global-set-key (kbd "M-2") 'jp/switch-other-buffer)
+  (global-set-key (kbd "M-2") 'split-window-below)
+  (global-set-key (kbd "M-3") 'split-window-right)
+  (global-set-key (kbd "M-4") 'jp/switch-other-buffer)
+  (global-set-key (kbd "M-7") 'previous-buffer)
+  (global-set-key (kbd "M-8") 'next-buffer)
   (global-set-key (kbd "M-9") 'bury-buffer)
+  (global-set-key (kbd "M-0") 'delete-window)
   (global-set-key (kbd "M-`") 'jp/windows-manage)
 
 #+END_SRC
