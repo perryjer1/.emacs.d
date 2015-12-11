@@ -250,6 +250,7 @@ With two \\[universal-argument], call `windresize'."
   (set-register ?c '(file . "~/.emacs.d/config.org"))
   (set-register ?n '(file . "~/Dropbox/Org/notes.org"))
   (set-register ?j '(file . "~/Dropbox/Org/journal.org"))
+  (set-register ?w '(file . "~/Dropbox/Org/work.org"))
 
 #+END_SRC
 
