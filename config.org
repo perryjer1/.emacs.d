@@ -109,7 +109,14 @@
 
 ** Global key bindings
 
+*** General bindings
+
 #+BEGIN_SRC emacs-lisp
+
+  ;; use ibuffer instead
+  (global-set-key (kbd "C-x C-b") 'ibuffer)
+
+  (global-set-key (kbd "C-x C-r") 'recentf-open-files)
 
   ;; default to regex search
   (global-set-key (kbd "C-s") 'isearch-forward-regexp)
@@ -120,13 +127,6 @@
   ;; I often type C-x f but not because I want to set the fill
   (global-set-key (kbd "C-x f") 'find-file)
 
-  (global-set-key (kbd "C-c t") 'toggle-truncate-lines)
-
-  ;; buffer reverting
-  (global-set-key (kbd "C-c r") 'revert-buffer)
-  (global-set-key (kbd "C-c R") 'auto-revert-mode)
-  (global-set-key (kbd "C-c T") 'auto-revert-tail-mode)
-
   ;; use hippie expand
   (global-set-key (kbd "M-/") 'hippie-expand)
 
@@ -136,9 +136,6 @@
   ;; switch to 'apropos' instead of 'apropos-command'
   (global-set-key (kbd "C-h a") 'apropos)
 
-  ;; put menu on <f2>, then we can use the M-` key for ace-window
-  (global-set-key (kbd "<f2>") 'tmm-menubar)
-
   ;; M-s prefix has search-related items, put grep there
   (global-set-key (kbd "M-s g") 'grep)
   (global-set-key (kbd "M-s r") 'rgrep)
@@ -146,9 +143,45 @@
   ;; M-g prefix is for going to, put register jumping there
   (global-set-key (kbd "M-g r") 'jump-to-register)
 
+  ;; put menu on <f2>, then we can use the M-` key for switching windows
+  (global-set-key (kbd "<f2>") 'tmm-menubar)
+
+  ;; give window functions easier key bindings
+  (global-set-key (kbd "M-1") 'delete-other-windows)
+  (global-set-key (kbd "M-2") 'split-window-below)
+  (global-set-key (kbd "M-3") 'split-window-right)
+  (global-set-key (kbd "M-4") 'jp/switch-other-buffer)
+  (global-set-key (kbd "M-7") 'previous-buffer)
+  (global-set-key (kbd "M-8") 'next-buffer)
+  (global-set-key (kbd "M-9") 'bury-buffer)
+  (global-set-key (kbd "M-0") 'delete-window)
+  (global-set-key (kbd "M-`") 'jp/windows-manage)
+
+  (global-set-key (kbd "C-<next>") 'jp/scroll-left)
+  (global-set-key (kbd "C-<prior>") 'jp/scroll-right)
+
 #+END_SRC
 
-** Global functions (with key bindings too)
+*** User prefix ("C-c")
+
+#+BEGIN_SRC emacs-lisp
+
+  (global-set-key (kbd "C-c t") 'toggle-truncate-lines)
+
+  ;; buffer reverting
+  (global-set-key (kbd "C-c r") 'revert-buffer)
+  (global-set-key (kbd "C-c R") 'auto-revert-mode)
+  (global-set-key (kbd "C-c T") 'auto-revert-tail-mode)
+
+  ;; copy filename to clipboard
+  (global-set-key (kbd "C-c p") 'jp/copy-filename)
+
+  ;; sometimes i need to toggle ido
+  (global-set-key (kbd "C-c i") 'ido-mode)
+
+#+END_SRC
+
+** Functions
 
 *** Copy filename
 
@@ -178,7 +211,6 @@ Next set of functions is used to copy filename to clipboard.
         (kill-new file-name)
         (message "'%s' copied to clipboard." file-name))))
 
-  (global-set-key (kbd "C-c p") 'jp/copy-filename)
 
 #+END_SRC
 
@@ -204,18 +236,6 @@ With two \\[universal-argument], call `windresize'."
     (16 (windresize))
     (t (other-window 1))))
 
-
-  ;; give window functions easier key bindings
-  (global-set-key (kbd "M-1") 'delete-other-windows)
-  (global-set-key (kbd "M-2") 'split-window-below)
-  (global-set-key (kbd "M-3") 'split-window-right)
-  (global-set-key (kbd "M-4") 'jp/switch-other-buffer)
-  (global-set-key (kbd "M-7") 'previous-buffer)
-  (global-set-key (kbd "M-8") 'next-buffer)
-  (global-set-key (kbd "M-9") 'bury-buffer)
-  (global-set-key (kbd "M-0") 'delete-window)
-  (global-set-key (kbd "M-`") 'jp/windows-manage)
-
 #+END_SRC
 
 *** Scrolling
@@ -232,9 +252,6 @@ With two \\[universal-argument], call `windresize'."
     "Scrolls the window one third to the right."
     (interactive)
     (scroll-right (/ (window-body-width) 3) t))
-
-  (global-set-key (kbd "C-<next>") 'jp/scroll-left)
-  (global-set-key (kbd "C-<prior>") 'jp/scroll-right)
 
 #+END_SRC
 
@@ -255,8 +272,8 @@ With two \\[universal-argument], call `windresize'."
 #+BEGIN_SRC emacs-lisp
 
   (set-register ?c '(file . "~/.emacs.d/config.org"))
-  (set-register ?n '(file . "~/Dropbox/Org/notes.org"))
   (set-register ?j '(file . "~/Dropbox/Org/journal.org"))
+  (set-register ?n '(file . "~/Dropbox/Org/notes.org"))
   (set-register ?w '(file . "~/Dropbox/Org/work.org"))
 
 #+END_SRC
@@ -313,7 +330,6 @@ See [[http://www.emacswiki.org/emacs/RecentFiles][recentf]].
 
   (recentf-mode +1)
   (setq recentf-max-menu-items 100)
-  (global-set-key (kbd "C-x C-r") 'recentf-open-files)
 
 #+END_SRC
 
@@ -325,7 +341,6 @@ See [[http://www.emacswiki.org/emacs/IbufferMode][ibuffer]].
 
   (require 'ibuffer)
 
-  (global-set-key (kbd "C-x C-b") 'ibuffer)
   (autoload 'ibuffer "ibuffer" "List buffers." t)
 
   ;; don't prompt every time I close buffers
@@ -367,8 +382,6 @@ See [[http://www.emacswiki.org/emacs/IbufferMode][ibuffer]].
   ;; don't prompt to make a new buffer
   (setq ido-create-new-buffer 'always)
   (ido-mode t)
-
-  (global-set-key (kbd "C-c i") 'ido-mode)
 
 #+END_SRC
 
