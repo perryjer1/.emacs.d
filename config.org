@@ -139,6 +139,13 @@
   ;; put menu on <f2>, then we can use the M-` key for ace-window
   (global-set-key (kbd "<f2>") 'tmm-menubar)
 
+  ;; M-s prefix has search-related items, put grep there
+  (global-set-key (kbd "M-s g") 'grep)
+  (global-set-key (kbd "M-s r") 'rgrep)
+
+  ;; M-g prefix is for going to, put register jumping there
+  (global-set-key (kbd "M-g r") 'jump-to-register)
+
 #+END_SRC
 
 ** Global functions (with key bindings too)
