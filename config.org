@@ -96,9 +96,6 @@
   ;; use winner mode
   (winner-mode +1)
 
-  ;; save desktop
-  (desktop-save-mode +1)
-
   ;; revert buffers automatically
   (global-auto-revert-mode +1)
 
@@ -317,6 +314,27 @@ With two \\[universal-argument], call `windresize'."
 
   ;; change the ... in outline mode
   (setq org-ellipsis " >")
+
+#+END_SRC
+
+** 'desktop'
+
+#+BEGIN_SRC emacs-lisp
+
+  ;; save desktop
+  (desktop-save-mode +1)
+
+  ;; see doc, not sure i like this
+  ;(setq desktop-restore-eager 10)
+
+  (setq desktop-globals-to-save
+    '(desktop-missing-file-warning
+;      tags-file-name
+;      tags-table-list
+      search-ring
+      regexp-search-ring
+;      register-alist
+      file-name-history))
 
 #+END_SRC
 
