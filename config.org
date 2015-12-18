@@ -176,6 +176,10 @@
   ;; sometimes i need to toggle ido
   (global-set-key (kbd "C-c i") 'ido-mode)
 
+  ;; org mode keys
+  (global-set-key (kbd "C-c a") 'org-agenda)
+  (global-set-key (kbd "C-c c") 'org-capture)
+
 #+END_SRC
 
 ** Functions
@@ -314,6 +318,9 @@ With two \\[universal-argument], call `windresize'."
 
   ;; change the ... in outline mode
   (setq org-ellipsis " >")
+
+  ;; add all org files in this dir to agenda
+  (setq org-agenda-files '("~/Dropbox/Org/"))
 
 #+END_SRC
 
