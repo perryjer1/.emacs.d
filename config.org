@@ -133,6 +133,9 @@
   ;; switch to 'apropos' instead of 'apropos-command'
   (global-set-key (kbd "C-h a") 'apropos)
 
+  ;; the default here should be this anyway:
+  (global-set-key (kbd "M-=") 'count-words)
+
   ;; M-s prefix has search-related items, put grep there
   (global-set-key (kbd "M-s g") 'grep)
   (global-set-key (kbd "M-s r") 'rgrep)
