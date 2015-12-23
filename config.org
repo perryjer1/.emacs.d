@@ -471,6 +471,15 @@ buffer...
 
 #+END_SRC
 
+** 'dired-x'
+
+#+BEGIN_SRC emacs-lisp
+
+  ;; for e.g. dired-jump, C-x C-j
+  (require 'dired-x)
+
+#+END_SRC
+
 ** 'server'
 
 Make Emacs a server. Some bug (windows file permissions?) is messing
