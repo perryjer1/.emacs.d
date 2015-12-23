@@ -153,7 +153,7 @@
   (global-set-key (kbd "M-4") 'jp/switch-other-buffer)
   (global-set-key (kbd "M-7") 'previous-buffer)
   (global-set-key (kbd "M-8") 'next-buffer)
-  (global-set-key (kbd "M-9") 'bury-buffer)
+  (global-set-key (kbd "M-9") 'jp/buffers-manage)
   (global-set-key (kbd "M-0") 'delete-window)
   (global-set-key (kbd "M-`") 'jp/windows-manage)
 
@@ -227,6 +227,18 @@ Next set of functions is used to copy filename to clipboard.
     "Switch to other buffer without prompting."
     (interactive)
     (switch-to-buffer (other-buffer)))
+
+
+  (defun jp/buffers-manage (arg)
+    "Fancy buffer management.
+With no prefix, call `bury-buffer'.
+With one \\[universal-argument], call `kill-buffer'.
+With two \\[universal-argument], call `kill-buffer-and-delete-file'."
+    (interactive "p")
+    (cl-case arg
+      (4 (kill-buffer))
+      (16 (kill-buffer))
+      (t (bury-buffer))))
 
 
   (defun jp/windows-manage (arg)
