@@ -379,7 +379,7 @@ See [[http://www.emacswiki.org/emacs/IbufferMode][ibuffer]].
         `(("default"
            ("Dired" (mode . dired-mode))
            ("Python" (or (mode . python-mode)
-                         (name . "^\\*Python\\*$")))
+                         (mode . inferior-python-mode)))
            ("R" (or (name . "^\\*R\\*$")
                     (mode . ess-mode)
                     (mode . ess-help-mode)))
