@@ -143,7 +143,7 @@
   ;; M-g prefix is for going to, put register jumping there
   (global-set-key (kbd "M-g r") 'jump-to-register)
 
-  ;; put menu on <f2>, then we can use the M-` key for switching windows
+  ;; M-` is captured on some systems, put the menu here
   (global-set-key (kbd "<f2>") 'tmm-menubar)
 
   ;; give window functions easier key bindings
@@ -151,11 +151,11 @@
   (global-set-key (kbd "M-2") 'split-window-below)
   (global-set-key (kbd "M-3") 'split-window-right)
   (global-set-key (kbd "M-4") 'jp/switch-other-buffer)
+  (global-set-key (kbd "M-6") 'jp/buffers-manage)
   (global-set-key (kbd "M-7") 'previous-buffer)
   (global-set-key (kbd "M-8") 'next-buffer)
-  (global-set-key (kbd "M-9") 'jp/buffers-manage)
+  (global-set-key (kbd "M-9") 'jp/windows-manage)
   (global-set-key (kbd "M-0") 'delete-window)
-  (global-set-key (kbd "M-`") 'jp/windows-manage)
 
   (global-set-key (kbd "C-<next>") 'jp/scroll-left)
   (global-set-key (kbd "C-<prior>") 'jp/scroll-right)
