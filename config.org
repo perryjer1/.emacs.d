@@ -39,6 +39,13 @@
   ;; allow C-u C-<SPC> C-<SPC> to cycle mark ring
   (setq set-mark-command-repeat-pop t)
 
+  ;; file encoding stuff
+  (prefer-coding-system 'utf-8)
+  (set-default-coding-systems 'utf-8)
+  (set-terminal-coding-system 'utf-8)
+  (set-keyboard-coding-system 'utf-8)
+  (setq default-buffer-file-coding-system 'utf-8)
+
   ;; backup file stuff
   (setq backup-directory-alist `(("." . ,(concat user-emacs-directory "backups")))
         backup-by-copying t
