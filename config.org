@@ -128,6 +128,11 @@
   (global-set-key (kbd "C-M-s") 'isearch-forward)
   (global-set-key (kbd "C-M-r") 'isearch-backward)
 
+  ;; default to regex replace
+  (global-set-key (kbd "M-%") 'query-replace-regexp)
+  (global-set-key (kbd "C-%") 'query-replace-regexp)
+  (global-set-key (kbd "C-M-%") 'query-replace)
+
   ;; I often type C-x f but not because I want to set the fill
   (global-set-key (kbd "C-x f") 'find-file)
 
