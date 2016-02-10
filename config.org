@@ -12,6 +12,9 @@
   ;; don't show the start up screen
   (setq inhibit-startup-screen t)
 
+  ;; i know what the scratch buffer is now, thanks
+  (setq initial-scratch-message nil)
+
   ;; word wrap off by default
   (setq-default truncate-lines t)
 
