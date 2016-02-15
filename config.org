@@ -573,6 +573,54 @@ of ~/.emacs.d/server as suggested in answer.
 
 #+END_SRC
 
+** 'exec-path-from-shell'
+
+#+BEGIN_SRC emacs-lisp
+
+  (use-package exec-path-from-shell
+    :config
+    ;;(if (memq window-system '(mac ns))
+        (exec-path-from-shell-initialize)) ;)
+
+#+END_SRC
+
+** 'flycheck'
+
+#+BEGIN_SRC emacs-lisp
+
+  (use-package flycheck)
+
+#+END_SRC
+
+** 'flymake'
+
+#+BEGIN_SRC emacs-lisp
+
+  ;(use-package flymake)
+
+#+END_SRC
+
+** 'elpy'
+
+#+BEGIN_SRC sh
+
+conda install jedi
+conda install flake8
+
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+
+  (use-package elpy
+    :config
+    (elpy-enable)
+    (elpy-use-ipython)
+    (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+    (add-hook 'elpy-mode-hook 'flycheck-mode)
+    (setq elpy-test-runner 'elpy-test-nose-runner))
+
+#+END_SRC
+
 ** 'yaml-mode'
 
 #+BEGIN_SRC emacs-lisp
@@ -703,17 +751,6 @@ See [[https://github.com/magnars/expand-region.el][expand-region]].
 
 #+END_SRC
 
-** 'exec-path-from-shell'
-
-#+BEGIN_SRC emacs-lisp
-
-  (use-package exec-path-from-shell
-    :config
-    (if (memq window-system '(mac ns))
-        (exec-path-from-shell-initialize)))
-
-#+END_SRC
-
 ** 'highlight-symbol
 
 #+BEGIN_SRC emacs-lisp
@@ -764,14 +801,6 @@ See [[https://github.com/ananthakumaran/monky][monky]] on github.
 
 #+END_SRC
 
-** 'flymake'
-
-#+BEGIN_SRC emacs-lisp
-
-(use-package flymake)
-
-#+END_SRC
-
 * Temp
 
 ** Python
@@ -798,7 +827,7 @@ See [[https://github.com/ananthakumaran/monky][monky]] on github.
   ;;  python-shell-completion-string-code
   ;;    "';'.join(get_ipython().Completer.all_completions('''%s'''))\n")
 
-  (setq python-shell-interpreter "ipython")
+  ;; (setq python-shell-interpreter "ipython")
 
 #+END_SRC
 ** C#
