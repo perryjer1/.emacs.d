@@ -579,8 +579,8 @@ of ~/.emacs.d/server as suggested in answer.
 
   (use-package exec-path-from-shell
     :config
-    ;;(if (memq window-system '(mac ns))
-        (exec-path-from-shell-initialize)) ;)
+    (if (memq window-system '(mac ns))
+        (exec-path-from-shell-initialize)))
 
 #+END_SRC
 
