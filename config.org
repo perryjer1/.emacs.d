@@ -136,6 +136,10 @@
   (global-set-key (kbd "C-%") 'query-replace-regexp)
   (global-set-key (kbd "C-M-%") 'query-replace)
 
+  ;; swap the scroll keys, i think of them backwards apparently
+  (global-set-key (kbd "C-x >") 'scroll-left)
+  (global-set-key (kbd "C-x <") 'scroll-right)
+
   ;; I often type C-x f but not because I want to set the fill
   (global-set-key (kbd "C-x f") 'find-file)
 
