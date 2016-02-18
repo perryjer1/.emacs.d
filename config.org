@@ -254,14 +254,14 @@ Next set of functions is used to copy filename to clipboard.
 
   (defun jp/buffers-manage (arg)
     "Fancy buffer management.
-With no prefix, call `bury-buffer'.
-With one \\[universal-argument], call `kill-buffer'.
-With two \\[universal-argument], call `kill-buffer-and-delete-file'."
+With no prefix, call `kill-buffer'.
+With one \\[universal-argument], call `delete-file-and-buffer'.
+With two \\[universal-argument], call `bury-buffer'."
     (interactive "p")
     (cl-case arg
-      (4 (kill-buffer))
-      (16 (kill-buffer))
-      (t (bury-buffer))))
+      (4 (jp/delete-file-and-buffer))
+      (16 (bury-buffer))
+      (t (kill-buffer))))
 
 
   (defun jp/windows-manage (arg)
@@ -274,6 +274,24 @@ With two \\[universal-argument], call `windresize'."
     (4 (ace-swap-window))
     (16 (windresize))
     (t (other-window 1))))
+
+#+END_SRC
+
+This is from [[http://emacsredux.com/blog/2013/04/03/delete-file-and-buffer/][Emacs Redux]].
+
+#+BEGIN_SRC emacs-lisp
+
+  (defun jp/delete-file-and-buffer ()
+    "Kill the current buffer and deletes the file it is visiting."
+    (interactive)
+    (let ((filename (buffer-file-name)))
+      (when filename
+        (if (vc-backend filename)
+            (vc-delete-file filename)
+          (progn
+            (delete-file filename)
+            (message "Deleted file %s" filename)
+            (kill-buffer))))))
 
 #+END_SRC
 
