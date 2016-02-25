@@ -919,11 +919,11 @@ about flymake-mode interaction. Requiring ~flymake~ fixed it.
     (interactive "MPost title: ")
     (let ((dir (jp/jekyll-find-root default-directory)))
       (if (null dir) (error "Not in a jekyll directory."))
-      (let ((fname (concat (file-name-directory dir)
-                           (file-name-directory "_posts")
+      (let ((fname (concat (file-name-as-directory dir)
+                           (file-name-as-directory "_posts")
                            (jp/jekyll-title->file-name title))))
         (find-file fname)
-        (insert (jekyll-header title)))))
+        (insert (jp/jekyll-header title)))))
 
 
   (defun jp/run-file ()
