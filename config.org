@@ -872,3 +872,67 @@ about flymake-mode interaction. Requiring ~flymake~ fixed it.
 ;    (setq TeX-PDF-mode t))
 
 #+END_SRC
+** Misc elisp
+
+#+BEGIN_SRC emacs-lisp
+
+  (defun jp/time-stamp ()
+    (format-time-string "%Y-%m-%d %H:%M:%S"))
+
+
+  (defun jp/today ()
+    (format-time-string "%Y-%m-%d"))
+
+
+  (defun jp/parent-dir (directory-or-file)
+    "Return the parent directory of `directory-or-file'."
+    (file-name-directory (directory-file-name directory-or-file)))
+
+
+  (defun jp/jekyll-title->file-name (title)
+    (concat (jp/today) "-" (replace-regexp-in-string " " "-" (downcase title)) ".md"))
+
+
+  (defun jp/jekyll-header (title &optional layout)
+    (let ((layouttype (if (null layout) "post" layout)))
+      (concat
+       "---\n"
+       (format "layout: %s\n" layouttype)
+       (format "title: %s\n" title)
+       (format "date: %s\n" (jp/time-stamp))
+       "tags:\n"
+       "---\n")))
+
+
+  (defun jp/jekyll-find-root (directory)
+    (let ((parent (jp/parent-dir directory)))
+      (cond
+       ((file-exists-p (concat (file-name-as-directory directory) "_posts"))
+        (file-name-as-directory directory))
+       ((string-equal directory parent)
+        nil)
+       (t
+        (jp/jekyll-find-root parent)))))
+
+
+  (defun jp/jekyll-new-post (title)
+    (interactive "MPost title: ")
+    (let ((dir (jp/jekyll-find-root default-directory)))
+      (if (null dir) (error "Not in a jekyll directory."))
+      (let ((fname (concat (file-name-directory dir)
+                           (file-name-directory "_posts")
+                           (jp/jekyll-title->file-name title))))
+        (find-file fname)
+        (insert (jekyll-header title)))))
+
+
+  (defun jp/run-file ()
+    (interactive)
+    (when (buffer-modified-p) (save-buffer))
+    (shell-command (concat "python " buffer-file-name) "*run-file-python-output*"))
+
+
+  (global-set-key (kbd "<f5>") 'jp/run-file)
+
+
+#+END_SRC
