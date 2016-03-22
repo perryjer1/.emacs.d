@@ -378,6 +378,14 @@ This is from [[http://emacsredux.com/blog/2013/04/03/delete-file-and-buffer/][Em
   ;; add all org files in this dir to agenda
   (setq org-agenda-files '("~/Dropbox/Org/"))
 
+  ;; load languages
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((R . t)
+     (python . t)
+     (emacs-lisp . t)
+     (sh . t)))
+
 #+END_SRC
 
 ** 'desktop'
