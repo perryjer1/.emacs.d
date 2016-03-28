@@ -827,6 +827,16 @@ See [[https://github.com/ananthakumaran/monky][monky]] on github.
 
 #+END_SRC
 
+I don't use the ~monky~ package much I guess but I do find files
+frequently in large hg repos which is slowed down quite a bit by the
+VC backend (~hg status -A~ maybe?). Turn it off like so.
+
+#+BEGIN_SRC emacs-lisp
+
+  (delete 'Hg vc-handled-backends)
+
+#+END_SRC
+
 * Temp
 
 ** Python
