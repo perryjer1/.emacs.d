@@ -369,6 +369,9 @@ This is from [[http://emacsredux.com/blog/2013/04/03/delete-file-and-buffer/][Em
   (setq org-src-fontify-natively t)
   (setq org-src-tab-acts-natively t)
 
+  ;; turns off the default CSS for HTML exports
+  (setq org-html-head-include-default-style nil)
+
   ;; make <RET> follow links
   (setq org-return-follows-link t)
 
