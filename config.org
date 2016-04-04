@@ -375,6 +375,9 @@ This is from [[http://emacsredux.com/blog/2013/04/03/delete-file-and-buffer/][Em
   ;; make <RET> follow links
   (setq org-return-follows-link t)
 
+  ;; use e.g. n/p/f/b when at the beginning of a headline
+  (setq org-use-speed-commands t)
+
   ;; change the ... in outline mode
   (setq org-ellipsis " >")
 
