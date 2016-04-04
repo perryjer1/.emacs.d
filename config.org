@@ -205,6 +205,7 @@
   ;; org mode keys
   (global-set-key (kbd "C-c a") 'org-agenda)
   (global-set-key (kbd "C-c c") 'org-capture)
+  (global-set-key (kbd "C-c l") 'org-store-link)
 
 #+END_SRC
 
@@ -389,6 +390,9 @@ See [[https://github.com/jkitchin/jmax][John Kitchin's config]] for many org-mod
   ;; enable prompt-free code running
   (setq org-confirm-babel-evaluate nil)
 
+  ;; default capture goes here
+  (setq org-default-notes-file "~/Dropbox/Org/notes.org")
+
   ;; add all org files in this dir to agenda
   (setq org-agenda-files '("~/Dropbox/Org/"))
 
@@ -399,6 +403,12 @@ See [[https://github.com/jkitchin/jmax][John Kitchin's config]] for many org-mod
      (python . t)
      (emacs-lisp . t)
      (sh . t)))
+
+  (setq org-capture-templates
+        '(("t" "Todo" entry (file+headline "~/Dropbox/Org/notes.org" "Tasks")
+           "* TODO %?\n  %i\n")
+          ("j" "Journal" entry (file+datetree "~/Dropbox/Org/diary.org")
+           "* %?\nEntered on %U\n  %i\n")))
 
 #+END_SRC
 
@@ -453,13 +463,14 @@ See [[http://www.emacswiki.org/emacs/IbufferMode][ibuffer]].
   (setq ibuffer-saved-filter-groups
         `(("default"
            ("Dired" (mode . dired-mode))
+           ("Org" (mode . org-mode))
            ("Python" (or (mode . python-mode)
                          (mode . inferior-python-mode)))
            ("R" (or (name . "^\\*R\\*$")
                     (mode . ess-mode)
                     (mode . ess-help-mode)))
-           ("Emacs Lisp" (or (mode . emacs-lisp-mode)
-                             (filename . ,(expand-file-name "~/.emacs"))))
+           ;; ("Emacs Lisp" (or (mode . emacs-lisp-mode)
+           ;;                   (filename . ,(expand-file-name "~/.emacs"))))
            ("Stuff" (or (mode . Man-mode)
                         (mode . woman-mode)
                         (mode . Info-mode)
