@@ -364,6 +364,8 @@ This is from [[http://emacsredux.com/blog/2013/04/03/delete-file-and-buffer/][Em
 
 ** 'org'
 
+See [[https://github.com/jkitchin/jmax][John Kitchin's config]] for many org-mode options.
+
 #+BEGIN_SRC emacs-lisp
 
   (setq org-src-fontify-natively t)
@@ -380,6 +382,12 @@ This is from [[http://emacsredux.com/blog/2013/04/03/delete-file-and-buffer/][Em
 
   ;; change the ... in outline mode
   (setq org-ellipsis " >")
+
+  ;; edit source in same window
+  (setq org-src-window-setup 'current-window)
+
+  ;; enable prompt-free code running
+  (setq org-confirm-babel-evaluate nil)
 
   ;; add all org files in this dir to agenda
   (setq org-agenda-files '("~/Dropbox/Org/"))
