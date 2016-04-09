@@ -596,21 +596,21 @@ of ~/.emacs.d/server as suggested in answer.
       ("melpa" . "http://melpa.org/packages/")
       ("marmalade" . "http://marmalade-repo.org/packages/")))
 
+#+END_SRC
+
+This call to ~package-initialize~ has failed with a message "wrong type
+argument: arrayp, nil" (e.g. April 2016 on my MacBook Air). I found a link on
+Emacs StackExchange that said to delete the file
+
+.emacs.d/elpa/archives/melpa/archive-contents
+
+when that happens. That fixed my problem.
+
+See [[http://emacs.stackexchange.com/questions/17823/package-initialize-wrong-type-argument-arrayp-nil][link]].
+
+#+BEGIN_SRC emacs-lisp
+
   (package-initialize)
-
-
-  ;; (defvar jp/packages-refreshed? nil
-  ;;   "For use in `jp/install-if-needed` to only refresh package contents once.")
-
-
-  ;; (defun jp/install-if-needed (pkg)
-  ;;   "Installs a package if it isn't installed already."
-  ;;   (unless (or (assoc pkg package-archive-contents) jp/packages-refreshed?)
-  ;;     (package-refresh-contents)
-  ;;     (setq jp/packages-refreshed? t))
-  ;;   (if (package-installed-p pkg)
-  ;;       t
-  ;;     (package-install pkg)))
 
 #+END_SRC
 
