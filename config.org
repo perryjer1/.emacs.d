@@ -147,6 +147,9 @@
   ;; I often type C-x f but not because I want to set the fill
   (global-set-key (kbd "C-x f") 'find-file)
 
+  ;; bind custom `unfill-region'
+  (global-set-key (kbd "C-M-q") 'unfill-region)
+
   ;; use hippie expand
   (global-set-key (kbd "M-/") 'hippie-expand)
 
@@ -326,6 +329,20 @@ This is from [[http://emacsredux.com/blog/2013/04/03/delete-file-and-buffer/][Em
     (interactive)
     (revert-buffer nil t)
     (message "Reverted buffer '%s'" (buffer-name)))
+
+#+END_SRC
+
+*** Unfill region
+
+#+BEGIN_SRC emacs-lisp
+
+  (defun unfill-region (beg end)
+    "Unfill the region, joining text paragraphs into a single
+  logical line.  This is useful, e.g., for use with
+  `visual-line-mode'."
+    (interactive "*r")
+    (let ((fill-column (point-max)))
+      (fill-region beg end)))
 
 #+END_SRC
 
