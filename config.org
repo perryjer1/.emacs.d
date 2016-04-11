@@ -30,8 +30,8 @@
   ;; This will show the current key combo in minbuffer sooner
   (setq echo-keystrokes 0.1)
 
-  ;; For fill, 80 chars seems like a better default
-  (setq-default fill-column 80)
+  ;; This seems like a better default
+  (setq-default fill-column 78)
 
   ;; Don't give file too big warning unless file is > 50MB
   (setq large-file-warning-threshold (* 50 1000 1000))
