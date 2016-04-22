@@ -999,4 +999,9 @@ about flymake-mode interaction. Requiring ~flymake~ fixed it.
   (global-set-key (kbd "<f5>") 'jp/run-file)
 
 
+  (defun jp/ms-open (path)
+    "Open file on MS-Windows."
+    (shell-command
+     (concat "start \"title\" " (shell-quote-argument path))))
+
 #+END_SRC
