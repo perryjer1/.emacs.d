@@ -939,6 +939,8 @@ about flymake-mode interaction. Requiring ~flymake~ fixed it.
 
 ** 'which-key'
 
+See [[https://github.com/justbur/emacs-which-key][link]].
+
 #+BEGIN_SRC emacs-lisp
 
   (use-package which-key
