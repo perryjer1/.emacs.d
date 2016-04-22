@@ -936,6 +936,17 @@ about flymake-mode interaction. Requiring ~flymake~ fixed it.
 ;    (setq TeX-PDF-mode t))
 
 #+END_SRC
+
+** 'which-key'
+
+#+BEGIN_SRC emacs-lisp
+
+  (use-package which-key
+    :config (which-key-mode))
+
+#+END_SRC
+
+
 ** Misc elisp
 
 #+BEGIN_SRC emacs-lisp
