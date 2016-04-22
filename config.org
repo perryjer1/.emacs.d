@@ -209,6 +209,9 @@
   ;; sometimes i need to toggle ido
   (global-set-key (kbd "C-c i") 'ido-mode)
 
+  ;; sometimes i like to toggle auto fill mode
+  (global-set-key (kbd "C-c f") 'auto-fill-mode)
+
   ;; org mode keys
   (global-set-key (kbd "C-c a") 'org-agenda)
   (global-set-key (kbd "C-c c") 'org-capture)
