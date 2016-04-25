@@ -31,7 +31,7 @@
   (setq echo-keystrokes 0.1)
 
   ;; This seems like a better default
-  (setq-default fill-column 78)
+  ;; (setq-default fill-column 78)
 
   ;; Don't give file too big warning unless file is > 50MB
   (setq large-file-warning-threshold (* 50 1000 1000))
@@ -145,7 +145,7 @@
   (global-set-key (kbd "C-x <") 'scroll-right)
 
   ;; I often type C-x f but not because I want to set the fill
-  (global-set-key (kbd "C-x f") 'find-file)
+  ;; (global-set-key (kbd "C-x f") 'find-file)
 
   ;; bind custom `unfill-region'
   (global-set-key (kbd "C-M-q") 'unfill-region)
@@ -950,7 +950,6 @@ See [[https://github.com/justbur/emacs-which-key][link]].
     :config (which-key-mode))
 
 #+END_SRC
-
 
 ** Misc elisp
 
