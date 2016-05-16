@@ -420,6 +420,8 @@ See [[https://github.com/jkitchin/jmax][John Kitchin's config]] for many org-mod
   ;; add all org files in this dir to agenda
   (setq org-agenda-files '("~/Dropbox/Org/"))
 
+  (setq org-agenda-ndays 21)
+
   ;; load languages
   (org-babel-do-load-languages
    'org-babel-load-languages
