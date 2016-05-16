@@ -1022,3 +1022,32 @@ See [[https://github.com/justbur/emacs-which-key][link]].
      (concat "start \"title\" " (shell-quote-argument path))))
 
 #+END_SRC
+
+[[http://emacsredux.com/blog/2016/01/31/use-tab-to-indent-or-complete/][Link]] to post.
+
+#+BEGIN_SRC emacs-lisp
+  (setq tab-always-indent 'complete)
+#+END_SRC
+
+
+[[http://emacsredux.com/blog/2013/04/21/edit-files-as-root/][Link]] to post.
+
+#+BEGIN_SRC emacs-lisp
+
+  (defun sudo-edit (&optional arg)
+    "Edit currently visited file as root.
+
+  With a prefix ARG prompt for a file to visit.
+  Will also prompt for a file to visit if current
+  buffer is not visiting a file."
+    (interactive "P")
+    (if (or arg (not buffer-file-name))
+        (find-file (concat "/sudo:root@localhost:"
+                           (ido-read-file-name "Find file(as root): ")))
+      (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
+
+#+END_SRC
+
+[[https://github.com/jkitchin/jmax/blob/master/jmax-org.el][Link]] to some misc Org configure stuff from John Kitchin.
+
+[[https://github.com/purcell/whole-line-or-region][Link]] to whole-line-or-region.
