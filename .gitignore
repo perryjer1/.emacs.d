@@ -9,3 +9,6 @@ smex-items
 /config.el
 /bookmarks
 /url/
+/recentf
+/ido.last
+/abbrev_defs
