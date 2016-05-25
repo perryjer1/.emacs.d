@@ -1029,6 +1029,7 @@ See [[https://github.com/justbur/emacs-which-key][link]].
   (setq tab-always-indent 'complete)
 #+END_SRC
 
+** sudo-edit
 
 [[http://emacsredux.com/blog/2013/04/21/edit-files-as-root/][Link]] to post.
 
@@ -1051,3 +1052,30 @@ See [[https://github.com/justbur/emacs-which-key][link]].
 [[https://github.com/jkitchin/jmax/blob/master/jmax-org.el][Link]] to some misc Org configure stuff from John Kitchin.
 
 [[https://github.com/purcell/whole-line-or-region][Link]] to whole-line-or-region.
+
+** jp/open-with
+
+I modified this from [[https://github.com/bbatsov/crux][crux]].
+
+#+BEGIN_SRC emacs-lisp
+
+  (defun jp/open-with (arg)
+    "Open visited file in default external program.
+  When in dired mode, open file under the cursor.
+  With a prefix ARG always prompt for command to use."
+    (interactive "P")
+    (let* ((current-file-name
+            (if (eq major-mode 'dired-mode)
+                (dired-get-file-for-visit)
+              buffer-file-name))
+           (open (pcase system-type
+                   (`darwin "open")
+                   (`windows-nt "start")
+                   ((or `gnu `gnu/linux `gnu/kfreebsd) "xdg-open")))
+           (program (if (or arg (not open))
+                        (read-shell-command "Open current file with: ")
+                      open)))
+      ;;    (start-process "crux-open-with-process" nil program current-file-name)))
+      (async-shell-command (concat open " " current-file-name))))
+
+#+END_SRC
