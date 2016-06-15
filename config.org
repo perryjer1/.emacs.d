@@ -866,6 +866,19 @@ See [[https://github.com/abo-abo/avy][avy]] on github.
 
 #+END_SRC
 
+** 'dired+'
+
+This gives =dired= some extra features on windows. See [[https://www.emacswiki.org/emacs/DiredPlus#w32-browser][link]].
+
+#+BEGIN_SRC emacs-lisp
+
+  (use-package dired+)
+  (use-package w32-browser)
+
+#+END_SRC
+
+[[http://stackoverflow.com/questions/22920659/dired-not-showing-details-anymore][Link]] explaining how to toggle the file listing details--use =(=.
+
 ** 'monky'
 
 See [[https://github.com/ananthakumaran/monky][monky]] on github.
