@@ -1053,7 +1053,13 @@ See [[https://github.com/justbur/emacs-which-key][link]].
 
 [[https://github.com/purcell/whole-line-or-region][Link]] to whole-line-or-region.
 
-** jp/open-with
+** Open stuff on Windows
+
+The original idea was to be able to open a file using the file
+associations on Windows. Here is a [[http://stackoverflow.com/questions/2284319/opening-files-with-default-windows-application-from-within-emacs][StackOverflow]] link that gives a few
+options. For now I like the dired+ options.
+
+*** jp/open-with
 
 I modified this from [[https://github.com/bbatsov/crux][crux]].
 
@@ -1079,3 +1085,25 @@ I modified this from [[https://github.com/bbatsov/crux][crux]].
       (async-shell-command (concat open " " current-file-name))))
 
 #+END_SRC
+
+*** jp/launch-explorer
+
+#+BEGIN_SRC emacs-lisp
+
+  (defun jp/launch-explorer ()
+    "Launch Windows Explorer from dired-mode."
+    (interactive)
+    (let* ((directory (file-name-directory (dired-get-file-for-visit)))
+           (dir (replace-regexp-in-string "/" "\\\\" directory)))
+      (start-process "explorer" "*Explorer*" "explorer" dir)))
+
+
+  (defun jp/launch-explorer ()
+    "Launch Windows Explorer from dired-mode."
+    (interactive)
+    (let* ((directory (file-name-directory (dired-get-file-for-visit)))
+           (dir (replace-regexp-in-string "/" "\\\\" directory)))
+      (w32-shell-execute "open" dir)))
+
+#+END_SRC
+
