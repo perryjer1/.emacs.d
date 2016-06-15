@@ -1120,3 +1120,21 @@ I modified this from [[https://github.com/bbatsov/crux][crux]].
 
 #+END_SRC
 
+** jp/fill-or-unfill
+
+[[http://endlessparentheses.com/fill-and-unfill-paragraphs-with-a-single-key.html][See post]].
+
+#+BEGIN_SRC emacs-lisp
+
+  (defun jp/fill-or-unfill ()
+    "Like `fill-paragraph', but unfill if used twice."
+    (interactive)
+    (let ((fill-column
+           (if (eq last-command 'jp/fill-or-unfill)
+               (progn (setq this-command nil)
+                      (point-max))
+             fill-column)))
+      (call-interactively #'fill-paragraph)))
+
+#+END_SRC
+
