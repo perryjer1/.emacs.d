@@ -433,7 +433,7 @@ See [[https://github.com/jkitchin/jmax][John Kitchin's config]] for many org-mod
   (setq org-capture-templates
         '(("t" "Todo" entry (file+headline "~/Dropbox/Org/notes.org" "Tasks")
            "* TODO %?\n  %i\n")
-          ("j" "Journal" entry (file+datetree "~/Dropbox/Org/diary.org")
+          ("d" "Diary" entry (file+datetree "~/Dropbox/Org/diary.org")
            "* %?\nEntered on %U\n  %i\n")))
 
 #+END_SRC
