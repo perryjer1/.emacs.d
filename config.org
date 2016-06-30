@@ -355,6 +355,7 @@ This is from [[http://emacsredux.com/blog/2013/04/03/delete-file-and-buffer/][Em
 
   (set-register ?c '(file . "~/.emacs.d/config.org"))
   (set-register ?j '(file . "~/Dropbox/Org/journal.org"))
+  (set-register ?d '(file . "~/Dropbox/Org/diary.org"))
   (set-register ?n '(file . "~/Dropbox/Org/notes.org"))
   (set-register ?w '(file . "~/Dropbox/Org/work.org"))
 
