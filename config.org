@@ -682,8 +682,8 @@ See [[http://emacs.stackexchange.com/questions/17823/package-initialize-wrong-ty
 
 #+BEGIN_SRC sh
 
-conda install jedi
-conda install flake8
+  conda install jedi
+  conda install flake8
 
 #+END_SRC
 
