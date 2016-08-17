@@ -695,7 +695,8 @@ conda install flake8
     (elpy-use-ipython)
     (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
     (add-hook 'elpy-mode-hook 'flycheck-mode)
-    (setq elpy-test-runner 'elpy-test-nose-runner))
+    (setq elpy-test-runner 'elpy-test-nose-runner)
+    (setq python-shell-interpreter-args "--simple-prompt --pprint"))
 
 #+END_SRC
 
