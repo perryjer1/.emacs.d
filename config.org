@@ -369,6 +369,7 @@ This is from [[http://emacsredux.com/blog/2013/04/03/delete-file-and-buffer/][Em
   (set-register ?d '(file . "~/Dropbox/Org/diary.org"))
   (set-register ?n '(file . "~/Dropbox/Org/notes.org"))
   (set-register ?w '(file . "~/Dropbox/Org/work.org"))
+  (set-register ?o '(file . "~/Dropbox/Org/"))
 
 #+END_SRC
 
