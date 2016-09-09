@@ -349,6 +349,17 @@ This is from [[http://emacsredux.com/blog/2013/04/03/delete-file-and-buffer/][Em
 
 #+END_SRC
 
+*** Insert date
+
+#+BEGIN_SRC emacs-lisp
+
+  (defun jp/insert-date ()
+    "Insert the current date."
+    (interactive)
+    (insert-string (format-time-string "%Y-%m-%d")))
+
+#+END_SRC
+
 ** Registers
 
 #+BEGIN_SRC emacs-lisp
