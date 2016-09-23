@@ -643,15 +643,13 @@ of ~/.emacs.d/server as suggested in answer.
 
 #+END_SRC
 
-This call to ~package-initialize~ has failed with a message "wrong type
-argument: arrayp, nil" (e.g. April 2016 on my MacBook Air). I found a link on
-Emacs StackExchange that said to delete the file
+This call to ~package-initialize~ has failed with a message "wrong
+type argument: arrayp, nil" (e.g. April 2016 on my MacBook Air). I
+found a [[http://emacs.stackexchange.com/questions/17823/package-initialize-wrong-type-argument-arrayp-nil][link]] on Emacs StackExchange that said to delete the file
 
-.emacs.d/elpa/archives/melpa/archive-contents
+~/.emacs.d/elpa/archives/melpa/archive-contents
 
 when that happens. That fixed my problem.
-
-See [[http://emacs.stackexchange.com/questions/17823/package-initialize-wrong-type-argument-arrayp-nil][link]].
 
 #+BEGIN_SRC emacs-lisp
 
