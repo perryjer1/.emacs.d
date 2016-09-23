@@ -116,6 +116,9 @@
   ;; and do the dired buffers too
   (setq global-auto-revert-non-file-buffers t)
 
+  ;; skip RStudio folders in grep
+  (add-to-list 'grep-find-ignored-directories ".Rproj*")
+
 #+END_SRC
 
 ** Global key bindings
