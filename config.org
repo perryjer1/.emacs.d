@@ -33,8 +33,8 @@
   ;; This seems like a better default
   ;; (setq-default fill-column 78)
 
-  ;; Don't give file too big warning unless file is > 50MB
-  (setq large-file-warning-threshold (* 50 1000 1000))
+  ;; Don't give file too big warning unless file is actually big
+  (setq large-file-warning-threshold (* 100 1000 1000))
 
   ;; emacs will prompt before closing
   (setq confirm-kill-emacs 'yes-or-no-p)
