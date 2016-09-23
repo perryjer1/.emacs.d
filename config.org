@@ -98,6 +98,12 @@
   ;; turn off the toolbar
   (tool-bar-mode -1)
 
+  ;; turn off vertical scroll bars
+  (scroll-bar-mode -1)
+
+  ;; and the horizontal scroll bars too
+  (horizontal-scroll-bar-mode -1)
+
   ;; turn off blinking cursor
   (blink-cursor-mode -1)
 
