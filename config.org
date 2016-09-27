@@ -122,9 +122,6 @@
   ;; and do the dired buffers too
   (setq global-auto-revert-non-file-buffers t)
 
-  ;; skip RStudio folders in grep
-  (add-to-list 'grep-find-ignored-directories ".Rproj*")
-
 #+END_SRC
 
 ** Global key bindings
@@ -614,6 +611,12 @@ buffer...
 
 #+END_SRC
 
+** 'grep'
+#+BEGIN_SRC emacs-lisp
+  ;; skip RStudio folders in grep
+  (require 'grep)
+  (add-to-list 'grep-find-ignored-directories ".Rproj*")
+#+END_SRC
 ** 'server'
 
 Make Emacs a server. Some bug (windows file permissions?) is messing
