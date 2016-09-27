@@ -172,8 +172,8 @@
   (global-set-key (kbd "M-=") 'count-words)
 
   ;; text sizing
-  (global-set-key (kbd "C-M-=") 'text-scale-increase)
-  (global-set-key (kbd "C-M--") 'text-scale-decrease)
+  (global-set-key (kbd "M-+") 'text-scale-increase)
+  (global-set-key (kbd "M-_") 'text-scale-decrease)
 
   ;; M-s prefix has search-related items, put grep there
   (global-set-key (kbd "M-s g") 'grep)
