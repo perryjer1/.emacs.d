@@ -223,6 +223,12 @@
   (global-set-key (kbd "C-c c") 'org-capture)
   (global-set-key (kbd "C-c l") 'org-store-link)
 
+  ;; C-c i prefix for inserting
+  (define-prefix-command 'jp/insert-keymap)
+  (define-key mode-specific-map "i" jp/insert-keymap)
+  (define-key jp/insert-keymap "d" 'jp/insert-date)
+  (define-key jp/insert-keymap "t" 'jp/insert-date-time)
+
 #+END_SRC
 
 ** Functions
@@ -363,6 +369,11 @@ This is from [[http://emacsredux.com/blog/2013/04/03/delete-file-and-buffer/][Em
     "Insert the current date."
     (interactive)
     (insert-string (format-time-string "%Y-%m-%d")))
+
+  (defun jp/insert-date-time ()
+      "Insert the current date and time."
+      (interactive)
+      (insert-string (format-time-string "%Y-%m-%d %H:%M:%S")))
 
 #+END_SRC
 
