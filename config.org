@@ -955,6 +955,17 @@ VC backend (~hg status -A~ maybe?). Turn it off like so.
 
 #+END_SRC
 
+** 'which-key'
+
+See [[https://github.com/justbur/emacs-which-key][link]].
+
+#+BEGIN_SRC emacs-lisp
+
+  (use-package which-key
+    :config (which-key-mode))
+
+#+END_SRC
+
 * Temp
 
 ** C#
@@ -979,17 +990,6 @@ about flymake-mode interaction. Requiring ~flymake~ fixed it.
 ;  (use-package auctex
 ;    :config
 ;    (setq TeX-PDF-mode t))
-
-#+END_SRC
-
-** 'which-key'
-
-See [[https://github.com/justbur/emacs-which-key][link]].
-
-#+BEGIN_SRC emacs-lisp
-
-  (use-package which-key
-    :config (which-key-mode))
 
 #+END_SRC
 
