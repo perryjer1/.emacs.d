@@ -879,9 +879,8 @@ This isn't really a third party package but I set it up with
 
 #+BEGIN_SRC emacs-lisp
 
-  ;; smex
-  (use-package smex
-    :bind ("M-x" . smex))
+  ;; (use-package smex
+  ;;   :bind ("M-x" . smex))
 
 #+END_SRC
 
@@ -891,7 +890,7 @@ See [[https://github.com/browse-kill-ring/browse-kill-ring][brose-kill-ring]].
 
 #+BEGIN_SRC emacs-lisp
 
-  (use-package browse-kill-ring)
+  ;; (use-package browse-kill-ring)
 
 #+END_SRC
 
