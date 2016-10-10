@@ -651,6 +651,7 @@ buffer...
   ;; skip RStudio folders in grep
   (require 'grep)
   (add-to-list 'grep-find-ignored-directories ".Rproj*")
+  (add-to-list 'grep-find-ignored-directories ".LocalHistory*")
 #+END_SRC
 ** 'server'
 
