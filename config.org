@@ -193,6 +193,16 @@
   (global-set-key (kbd "M-9") 'jp/windows-manage)
   (global-set-key (kbd "M-0") 'delete-window)
 
+  ;; and make corresponding frame key bindings
+  (global-set-key (kbd "C-M-1") 'delete-other-frames)
+  (global-set-key (kbd "C-M-2") 'make-frame-command)
+  (global-set-key (kbd "C-M-3") 'make-frame-command)
+  (global-set-key (kbd "C-M-7") 'jp/previous-frame)
+  (global-set-key (kbd "C-M-8") 'jp/next-frame)
+  (global-set-key (kbd "C-M-9") 'other-frame)
+  (global-set-key (kbd "C-M-0") 'delete-frame)
+
+  ;; scrolling
   (global-set-key (kbd "C-<next>") 'jp/scroll-left)
   (global-set-key (kbd "C-<prior>") 'jp/scroll-right)
 
@@ -327,6 +337,20 @@ This is from [[http://emacsredux.com/blog/2013/04/03/delete-file-and-buffer/][Em
 
 #+END_SRC
 
+*** Frame management
+
+I don't know if I'm backward or what but from what I've played with so
+far, +1 goes back and -1 goes forward.
+
+#+BEGIN_SRC emacs-lisp
+  (defun jp/previous-frame ()
+    (interactive)
+    (other-frame +1))
+
+  (defun jp/next-frame ()
+    (interactive)
+    (other-frame -1))
+#+END_SRC
 *** Scrolling
 
 #+BEGIN_SRC emacs-lisp
