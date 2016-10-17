@@ -198,6 +198,15 @@
 
 #+END_SRC
 
+Function ~comment-line~ is new in Emacs 25. I like it better than
+~comment-dwim~ so set key bindings accordingly. It is possible to join
+their behavior, see [[http://ergoemacs.org/misc/emacs_comment-line_vs_comment-dwim.html][here]].
+
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "M-;") 'comment-line)
+  (global-set-key (kbd "C-M-;") 'comment-dwim)
+#+END_SRC
+
 *** User prefix ("C-c")
 
 #+BEGIN_SRC emacs-lisp
