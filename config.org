@@ -884,6 +884,7 @@ This isn't really a third party package but I set it up with
             (lambda ()
               (setq ess-default-style 'GNU)))
 
+  (add-hook 'ess-post-run-hook 'ess-execute-screen-options)
 
   ;; modified from comint-dynamic-list-input-ring
   (defun jp/r-history ()
