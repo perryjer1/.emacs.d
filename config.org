@@ -119,8 +119,17 @@
   ;; revert buffers automatically
   (global-auto-revert-mode +1)
 
+  ;; electric pair mode
+  (electric-pair-mode +1)
+
   ;; and do the dired buffers too
   (setq global-auto-revert-non-file-buffers t)
+
+  ;; prettify symbols is nice
+  (prettify-symbols-mode +1)
+
+  ;; this makes the symbol unprettify if point is nearby
+  (setq prettify-symbols-unprettify-at-point 'right-edge)
 
 #+END_SRC
 
