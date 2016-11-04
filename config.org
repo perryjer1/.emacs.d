@@ -942,6 +942,16 @@ See [[https://github.com/browse-kill-ring/browse-kill-ring][brose-kill-ring]].
 
 #+END_SRC
 
+** 'undo-tree'
+Use ~C-x u~ to visual undo tree.
+#+BEGIN_SRC emacs-lisp
+  (use-package undo-tree
+    :init
+    (progn
+      (global-undo-tree-mode)
+      (setq undo-tree-visualizer-timestamps t)
+      (setq undo-tree-visualizer-diff t)))
+#+END_SRC
 ** 'expand-region'
 
 See [[https://github.com/magnars/expand-region.el][expand-region]].
