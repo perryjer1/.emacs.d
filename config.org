@@ -820,7 +820,7 @@ when that happens. That fixed my problem.
     (elpy-enable)
     (elpy-use-ipython)
     (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-    (add-hook 'elpy-mode-hook 'flycheck-mode)
+    ;; (add-hook 'elpy-mode-hook 'flycheck-mode)
     (setq elpy-test-runner 'elpy-test-nose-runner)
     (setq elpy-syntax-check-command "flake8 --jobs 1")  ; need this for now on windows, without it the process hangs
     (setq python-shell-interpreter-args "--simple-prompt --pprint"))
