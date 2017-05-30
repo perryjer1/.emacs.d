@@ -12,3 +12,6 @@
 (require 'org)
 
 (org-babel-load-file (expand-file-name "config.org" user-emacs-directory))
+
+(setq custom-file (concat user-emacs-directory "custom.el"))
+(load custom-file 'noerror)
