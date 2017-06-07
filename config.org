@@ -795,6 +795,9 @@ when that happens. That fixed my problem.
     (ivy-mode +1)
     (setq ivy-use-virtual-buffers t)
     ;; (global-set-key (kbd "C-c C-r") 'ivy-resume)
+    (setq ivy-re-builders-alist
+          ;; allow input in any order
+          '((t . ivy--regex-ignore-order)))
     (global-set-key "\C-s" 'swiper))
 
 #+END_SRC
