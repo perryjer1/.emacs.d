@@ -840,6 +840,10 @@ when that happens. That fixed my problem.
 
 #+END_SRC
 
+** 'bookmark+'
+#+BEGIN_SRC emacs-lisp
+  (use-package bookmark+)
+#+END_SRC
 ** 'zop-to-char'
 
 #+BEGIN_SRC emacs-lisp
