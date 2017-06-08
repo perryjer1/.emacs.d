@@ -55,6 +55,7 @@
   ;; backup file stuff
   (setq backup-directory-alist `(("." . ,(concat user-emacs-directory "backups")))
         backup-by-copying t
+        ;; version-control t
         delete-old-versions t
         kept-new-versions 6
         kept-old-versions 2)
