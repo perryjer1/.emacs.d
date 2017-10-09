@@ -1042,6 +1042,18 @@ This gives =dired= some extra features on windows. See [[https://www.emacswiki.o
 
 [[http://stackoverflow.com/questions/22920659/dired-not-showing-details-anymore][Link]] explaining how to toggle the file listing details--use =(=.
 
+** 'dired-subtree'
+
+I've been looking for this for a long time.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package dired-subtree
+    :config
+    (bind-keys :map dired-mode-map
+               ("i" . dired-subtree-insert)
+               (";" . dired-subtree-remove)))
+#+END_SRC
+
 ** 'monky'
 
 See [[https://github.com/ananthakumaran/monky][monky]] on github.
